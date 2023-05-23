@@ -6,6 +6,7 @@ import JoinDetails from './components/JoinDetails';
 import GamemodeSelect from './components/GamemodeSelect';
 import Waiting from './components/Waiting';
 import Playing from './components/Playing';
+import './styles/global.css';
 
 function App() {
     

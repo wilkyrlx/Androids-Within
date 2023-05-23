@@ -33,21 +33,30 @@ function GamemodeSelect({ setView, room }: { setView: any, room: number }) {
             setAvailableGamemodes(availableGamemodes);
         }
 
-        fetchGamemodes();
         fetchAvailableGamemodes();
+        fetchGamemodes();
     }, []);
 
+    // conditional styling for gamemodes, only available gamemodes are clickable
+    function availableGamemodeClass(gamemode: string): string {
+        if (availableGamemodes.includes(gamemode)) {
+            return "available-gamemode";
+        } else {
+            return "";
+        }
+    }
 
     return (
         <div id="gamemode-select">
             <p> select your gamemode </p>
             <ul>
                 {gamemodes.map((gamemode: any) => (
-                    <li key={gamemode}>{gamemode}</li>
+                    <li key={gamemode} className={availableGamemodeClass(gamemode)}>{gamemode}</li>
                 ))}
             </ul>
         </div>
     )
 }
+
 
 export default GamemodeSelect;

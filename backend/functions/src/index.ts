@@ -123,7 +123,7 @@ app.get('/api/get-available-gamemodes/:roomID', (req: Request, res: Response) =>
     const players: number = gameRooms[roomIDNum].numPlayers;
     const availableGamemodes = getAvailableGamemodes(players);
 
-    res.status(200).json({ availableGamemodes: availableGamemodes });
+    res.status(200).json({ gamemodes: availableGamemodes });
 
 });
 
