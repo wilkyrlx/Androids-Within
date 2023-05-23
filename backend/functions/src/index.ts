@@ -3,10 +3,7 @@ import express, { Request, Response } from "express";
 import GameRoom from "./util/GameRoom";
 import Player from "./util/Player";
 
-// TODO: ass express routes to firebase
-// // Start writing functions
-// // https://firebase.google.com/docs/functions/typescript
-//
+// TODO: remove this endpoint before production
 export const helloWorld = functions.https.onRequest((request, response) => {
   functions.logger.info("Hello logs!", {structuredData: true});
   response.send("Hello from Firebase!");
@@ -18,7 +15,12 @@ const app = express();
 const gameRooms: { [key: number]: GameRoom } = {};
 let numRooms: number = 0;
 
-
+/** create-game endpoint
+ * 
+ * @param sheetID - The Google Sheet ID associated with the game room
+ * @param gameMode - The game mode of the game room, represented as a number
+ * @param numPlayers - The exact number of players in the game room
+ */
 app.get('/api/create-game/:sheetID/:gameMode/:numPlayers', (req: Request, res: Response) => {
     const { sheetID, gameMode, numPlayers } = req.params;
 
@@ -42,6 +44,13 @@ app.get('/api/create-game/:sheetID/:gameMode/:numPlayers', (req: Request, res: R
     res.status(200).json({ roomID: roomID });
 });
 
+/** join-game endpoint
+ * joins a game that has already been created, given a roomID. Returns an error 
+ * if the roomID is invalid or if the game room is full. Assigns the player an ID
+ * based on their position in the 'players' array.
+ * 
+ * @param roomID - The room code
+ */
 app.get('/api/join-game/:roomID', (req: Request, res: Response) => {
     const { roomID } = req.params;
 
@@ -66,7 +75,7 @@ app.get('/api/join-game/:roomID', (req: Request, res: Response) => {
     }
 
     // Create a new player
-    const playerID = gameRoom.players.length;
+    const playerID = gameRoom.players.length;   // TODO: in the future, playerID could be chosen by the player
     const newPlayer: Player = new Player(playerID);
 
     // Add the player to the game room
@@ -76,6 +85,8 @@ app.get('/api/join-game/:roomID', (req: Request, res: Response) => {
     res.status(200).json({ playerID: playerID });
 });
 
+// get-game endpoint, returns the game room object. DEVELOPER ONLY ENDPOINT
+// TODO: remove this endpoint before production
 app.get('/api/get-game/:roomID', (req: Request, res: Response) => {
     const { roomID } = req.params;
     
