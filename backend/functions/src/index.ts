@@ -1,16 +1,17 @@
 import * as functions from "firebase-functions";
 import express, { Request, Response } from "express";
+import cors from "cors";
 import GameRoom from "./util/GameRoom";
 import Player from "./util/Player";
 import { getAvailableGamemodes, getAllGamemodes } from "./util/gameModes";
 
-// TODO: remove this endpoint before production
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello from Firebase!");
-});
-
+const corsOptions = {
+    origin: '*',
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+}
 const app = express();
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 // Helper function to check if roomID is valid, returns roomID as a number
 function isValidRoom(roomID: string, res: Response) {
@@ -95,7 +96,7 @@ app.get('/api/join-game/:roomID', (req: Request, res: Response) => {
 // TODO: remove this endpoint before production
 app.get('/api/get-game/:roomID', (req: Request, res: Response) => {
     const { roomID } = req.params;
-    
+
     const roomIDNum: number = isValidRoom(roomID, res) as number;
 
     // Return the game room
@@ -134,7 +135,7 @@ app.get('/api/get-available-gamemodes/:roomID', (req: Request, res: Response) =>
 /** set-gamemode endpoint, sets the gamemode of the game room */
 app.get('/api/set-gamemode/:roomID/:gamemode', (req: Request, res: Response) => {
     const { roomID, gamemode } = req.params;
-    
+
     // Check if roomID and gamemode is a number
     const roomIDNum = Number(roomID);
     const gamemodeNum = Number(gamemode);

@@ -14,11 +14,11 @@ function App() {
 
     return (
         <div id="App">
-            < button onClick={() => setView(pageView.LANDING)}>Home</button>
+            < button onClick={() => setView(pageView.GAMEMODE_SELECT)}>test</button>
             { view === pageView.LANDING && <Landing setView={setView} /> }
-            { view === pageView.HOST_DETAILS && <HostDetails setView={setView} /> }
+            { view === pageView.HOST_DETAILS && <HostDetails setView={setView} setRoom={setRoom} /> }
             { view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} /> }
-            { view === pageView.GAMEMODE_SELECT && <GamemodeSelect setView={setView} /> }
+            { view === pageView.GAMEMODE_SELECT && <GamemodeSelect setView={setView} room={room} /> }
             { view === pageView.WAITING && <Waiting setView={setView} /> }
             { view === pageView.PLAYING && <Playing setView={setView} /> }
         </div>
