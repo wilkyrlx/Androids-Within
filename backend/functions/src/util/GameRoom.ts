@@ -5,8 +5,8 @@ import Player from "./Player";
  * 
  * @param id - The room code
  * @param sheetID - The Google Sheet ID associated with the game room
- * @param players - The players in the game room
- * @param gameMode - The game mode of the game room, represented as a number
+ * @param players - The players in the game room. Initially empty
+ * @param gameMode - The game mode of the game room, represented as a number. Initially 0 (waiting)
  * @param numPlayers - The exact number of players in the game room
  * @param status - The status of the game room
  */
@@ -18,11 +18,11 @@ class GameRoom {
     numPlayers: number;     
     status: string;
 
-    constructor(id: number, sheetID: string, gameMode: number, numPlayers: number, status: string) {
+    constructor(id: number, sheetID: string, numPlayers: number, status: string) {
         this.id = id;
         this.sheetID = sheetID;
         this.players = [];
-        this.gameMode = gameMode;
+        this.gameMode = 0;
         this.numPlayers = numPlayers;
         this.status = status;            
     }
