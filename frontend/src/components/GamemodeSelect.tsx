@@ -6,3 +6,5 @@ function GamemodeSelect({ setView }: { setView: any }) {
         </div>
     )
 }
+
+export default GamemodeSelect;
