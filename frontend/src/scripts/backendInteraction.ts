@@ -14,4 +14,13 @@ async function joinGameBackend(roomCode: string): Promise<number> {
     return response.playerID;
 }
 
-export { createGameBackend, joinGameBackend };
+async function awaitingPlayersBackend(roomCode: string): Promise<any> {
+    const url = process.env.REACT_APP_API_URL + "/api/game-status/" + roomCode;
+    const rawResponse = await fetch(url);
+    const response = await rawResponse.json();
+    // console.log(response.message);
+
+    return response;
+}
+
+export { createGameBackend, joinGameBackend, awaitingPlayersBackend };

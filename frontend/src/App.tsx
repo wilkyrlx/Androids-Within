@@ -20,7 +20,7 @@ function App() {
             { view === pageView.HOST_DETAILS && <HostDetails setView={setView} setRoom={setRoom} /> }
             { view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} setRoom={setRoom} /> }
             { view === pageView.GAMEMODE_SELECT && <GamemodeSelect setView={setView} room={room} /> }
-            { view === pageView.WAITING && <Waiting setView={setView} /> }
+            { view === pageView.WAITING && <Waiting setView={setView} room={room} /> }
             { view === pageView.PLAYING && <Playing setView={setView} /> }
         </div>
     );

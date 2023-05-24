@@ -4,7 +4,9 @@ import cors from "cors";
 import GameRoom from "./util/GameRoom";
 import Player from "./util/Player";
 import { getAvailableGamemodes, getAllGamemodes } from "./util/gameModes";
+import WebSocket from "ws";
 
+// ========================== Setup ============================================
 const corsOptions = {
     origin: '*',
     credentials: true,            //access-control-allow-credentials:true
@@ -12,6 +14,11 @@ const corsOptions = {
 }
 const app = express();
 app.use(cors(corsOptions)) // Use this after the variable declaration
+// TODO: use websockets to speed up the rate at which the game polls the server
+// const wss = new WebSocket.Server({ noServer: true });
+
+// =============================================================================
+
 
 // Helper function to check if roomID is valid, returns roomID as a number
 function isValidRoom(roomID: string, res: Response) {
@@ -127,10 +134,20 @@ app.get('/api/get-available-gamemodes/:roomID', (req: Request, res: Response) =>
 
 });
 
+/** game-status endpoint, returns how many players have joined out of the total */
+app.get('/api/game-status/:roomID', (req: Request, res: Response) => {
+    const { roomID } = req.params;
 
+    const roomIDNum: number = isValidRoom(roomID, res) as number;
 
+    // return the number of players that have joined
+    const numPlayersActual: number = gameRooms[roomIDNum].players.length;
+    const numPlayersExpected: number = gameRooms[roomIDNum].numPlayers;
+    const status: string = numPlayersActual === numPlayersExpected ? "ready" : "waiting";
 
+    res.status(200).json({ status: status, actualPlayers: numPlayersActual, expectedPlayers: numPlayersExpected });
 
+});
 
 /** set-gamemode endpoint, sets the gamemode of the game room */
 app.get('/api/set-gamemode/:roomID/:gamemode', (req: Request, res: Response) => {

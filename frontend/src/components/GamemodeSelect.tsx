@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import IGamemode from "../types/IGamemode";
 import { getAllGamemodes, getAvailableGamemodes } from "../scripts/backendGamemodes";
+import { pageView } from "../types/pageView";
 
 
 
@@ -45,6 +46,7 @@ function GamemodeSelect({ setView, room }: { setView: any, room: number }) {
                     <li key={gamemode.code} className={availableGamemodeClass(gamemode)}>{gamemode.name}</li>
                 ))}
             </ul>
+            <button onClick={() => setView(pageView.WAITING)}>start game</button>
         </div>
     )
 }
