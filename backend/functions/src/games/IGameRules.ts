@@ -2,7 +2,6 @@ interface IGameRules {
     players: number[];
     assignments: { [key: number]: string };
     assignRoles(): void;
-    shuffle(array: number[]): number[];
 }
 
 // TODO: is this shuffle function actually random? try to prove it
