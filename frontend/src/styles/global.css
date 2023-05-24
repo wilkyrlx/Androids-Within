@@ -1,8 +1,10 @@
+/* functional css - selectable gamemode */
 .available-gamemode {
     color: blue;
     cursor: pointer;
 }
 
+/* functional css - non-selectable gamemode */
 .unavailable-gamemode {
     pointer-events: none;
     cursor: default;

@@ -50,6 +50,14 @@ function GamemodeSelect({ setView, room, isHost }: { setView: any, room: number,
         }
     }
 
+    function updateGamemode(gamemode: IGamemode) {
+        setSelectedGamemode(gamemode);
+        const startGameBtn: HTMLButtonElement | null = document.getElementById("start-game-btn") as HTMLButtonElement;
+        if (startGameBtn) {
+            startGameBtn.disabled = false;
+        }
+    }
+
     return (
         <div id="gamemode-select">
             <p> select your gamemode </p>
@@ -58,13 +66,13 @@ function GamemodeSelect({ setView, room, isHost }: { setView: any, room: number,
                     <li 
                     key={gamemode.code} 
                     className={availableGamemodeClass(gamemode)} 
-                    onClick={() => setSelectedGamemode(gamemode)}>
+                    onClick={() => updateGamemode(gamemode)}>
                         {gamemode.name}
                     </li>
                 ))}
             </ul>
             
-            { isHost && <button onClick={() => startGame()}>Start Game</button> }
+            { isHost && <button id="start-game-btn" onClick={() => startGame()} disabled={true}>Start Game</button> }
             { !isHost && <button onClick={() => setView(pageView.WAITING)}>Join Lobby</button> }
         </div>
     )
