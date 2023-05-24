@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import IGamemode from "../types/IGamemode";
 
 // get all possible gamemodes from the backend
-async function getAllGamemodes(): Promise<any[]> {
+async function getAllGamemodes(): Promise<IGamemode[]> {
     const url = process.env.REACT_APP_API_URL + "/api/get-gamemodes";
     const rawResponse = await fetch(url);
     const response = await rawResponse.json();
@@ -10,7 +11,7 @@ async function getAllGamemodes(): Promise<any[]> {
 }
 
 // get all available gamemodes from the backend
-async function getAvailableGamemodes(roomID: number): Promise<any[]> {
+async function getAvailableGamemodes(roomID: number): Promise<IGamemode[]> {
     const url = process.env.REACT_APP_API_URL + "/api/get-available-gamemodes/" + roomID.toString();
     const rawResponse = await fetch(url);
     const response = await rawResponse.json();
@@ -20,8 +21,8 @@ async function getAvailableGamemodes(roomID: number): Promise<any[]> {
 
 function GamemodeSelect({ setView, room }: { setView: any, room: number }) {
 
-    const [gamemodes, setGamemodes] = useState<any[]>([]);
-    const [availableGamemodes, setAvailableGamemodes] = useState<any[]>([]);
+    const [gamemodes, setGamemodes] = useState<IGamemode[]>([]);
+    const [availableGamemodesID, setAvailableGamemodesID] = useState<number[]>([]);
 
     useEffect(() => {
         async function fetchGamemodes() {
@@ -30,7 +31,11 @@ function GamemodeSelect({ setView, room }: { setView: any, room: number }) {
         }
         async function fetchAvailableGamemodes() {
             const availableGamemodes = await getAvailableGamemodes(room);
-            setAvailableGamemodes(availableGamemodes);
+            const tempAvailableGamemodesID: number[] = [];
+            for (let i = 0; i < availableGamemodes.length; i++) {
+                tempAvailableGamemodesID.push(availableGamemodes[i].code);
+            }
+            setAvailableGamemodesID(tempAvailableGamemodesID);
         }
 
         fetchAvailableGamemodes();
@@ -38,8 +43,9 @@ function GamemodeSelect({ setView, room }: { setView: any, room: number }) {
     }, []);
 
     // conditional styling for gamemodes, only available gamemodes are clickable
-    function availableGamemodeClass(gamemode: string): string {
-        if (availableGamemodes.includes(gamemode)) {
+    function availableGamemodeClass(gamemode: IGamemode): string {
+        if (availableGamemodesID.includes(gamemode.code)) {
+            console.log("available gamemode");
             return "available-gamemode";
         } else {
             return "";
@@ -50,8 +56,8 @@ function GamemodeSelect({ setView, room }: { setView: any, room: number }) {
         <div id="gamemode-select">
             <p> select your gamemode </p>
             <ul>
-                {gamemodes.map((gamemode: any) => (
-                    <li key={gamemode} className={availableGamemodeClass(gamemode)}>{gamemode}</li>
+                {gamemodes.map((gamemode: IGamemode) => (
+                    <li key={gamemode.code} className={availableGamemodeClass(gamemode)}>{gamemode.name}</li>
                 ))}
             </ul>
         </div>
