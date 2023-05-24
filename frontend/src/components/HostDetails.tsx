@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
 import { pageView } from "../types/pageView";
+import { createGameBackend, joinGameBackend } from "../scripts/backendInteraction";
 
-async function createGame(sheetID: string, numPlayers: number): Promise<number> {
-    const url = process.env.REACT_APP_API_URL + "/api/create-game/" + sheetID + "/" + numPlayers.toString();
-    const rawResponse = await fetch(url);
-    const response = await rawResponse.json();
-    console.log(response.roomID);
-    return response.roomID;
-}
+
 
 
 function HostDetails({ setView, setRoom }: { setView: any, setRoom: any }) {
@@ -15,7 +10,8 @@ function HostDetails({ setView, setRoom }: { setView: any, setRoom: any }) {
     const [playerCount, setPlayerCount] = useState<string>('');
 
     async function startGame() {
-        const roomID = await createGame("1", parseInt(playerCount));
+        const roomID = await createGameBackend("1", parseInt(playerCount));     // TODO: sheet code
+        const playerID: number = await joinGameBackend(roomID.toString());
         setRoom(roomID);
         setView(pageView.GAMEMODE_SELECT);
     }

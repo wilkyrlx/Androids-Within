@@ -18,7 +18,7 @@ function App() {
             < button onClick={() => setView(pageView.GAMEMODE_SELECT)}>test</button>
             { view === pageView.LANDING && <Landing setView={setView} /> }
             { view === pageView.HOST_DETAILS && <HostDetails setView={setView} setRoom={setRoom} /> }
-            { view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} /> }
+            { view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} setRoom={setRoom} /> }
             { view === pageView.GAMEMODE_SELECT && <GamemodeSelect setView={setView} room={room} /> }
             { view === pageView.WAITING && <Waiting setView={setView} /> }
             { view === pageView.PLAYING && <Playing setView={setView} /> }
