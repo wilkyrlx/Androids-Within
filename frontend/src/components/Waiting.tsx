@@ -12,6 +12,7 @@ function Waiting({ setView, room }: { setView: any, room: number}) {
     const [expectedPlayers, setExpectedPlayers] = useState<string>('0');
 
     async function checkGameStatus() {
+        console.log("checking game status");
         const gameStatus: any = await awaitingPlayersBackend(room.toString());
         if (gameStatus.status === "ready") {
             setView(pageView.PLAYING);

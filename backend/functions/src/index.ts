@@ -174,6 +174,38 @@ app.get('/api/set-gamemode/:roomID/:gamemode', (req: Request, res: Response) => 
     res.status(200).json({ gameRoom: gameRooms[roomIDNum] });
 });
 
+/** get-role endpoint, gets the role for a player given a room and player ID */
+app.get('/api/get-role/:roomID/:playerID', (req: Request, res: Response) => {
+    const { roomID, playerID } = req.params;
+
+    // Check if roomID and playerID is a number
+    const roomIDNum = Number(roomID);
+    const playerIDNum = Number(playerID);
+    if (isNaN(roomIDNum) || isNaN(playerIDNum)) {
+        res.status(400).json({ error: 'Invalid parameter. Numbers expected.' });
+        return;
+    }
+
+    // Check if roomID exists
+    if (!(roomIDNum in gameRooms)) {
+        res.status(400).json({ error: 'Invalid roomID.' });
+        return;
+    }
+
+    // Check if playerID exists
+    if (playerIDNum >= gameRooms[roomIDNum].players.length) {
+        res.status(400).json({ error: 'Invalid playerID.' });
+        return;
+    }
+
+    const player: Player = gameRooms[roomIDNum].players[playerIDNum];
+
+    // Return the role
+    res.status(200).json({ name: player.name, role: player.role });
+});
+
+    
+
 
 
 
