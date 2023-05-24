@@ -31,4 +31,13 @@ async function getRoleBackend(roomCode: string, playerID: number): Promise<any> 
     return response;
 }
 
-export { createGameBackend, joinGameBackend, awaitingPlayersBackend, getRoleBackend };
+async function setGamemodeBackend(roomCode: string, gamemode: number): Promise<any> {
+    const url = process.env.REACT_APP_API_URL + "/api/set-gamemode/" + roomCode + "/" + gamemode.toString();
+    const rawResponse = await fetch(url);
+    const response = await rawResponse.json();
+    // console.log(response);
+    return response;
+}
+
+
+export { createGameBackend, joinGameBackend, awaitingPlayersBackend, getRoleBackend, setGamemodeBackend };

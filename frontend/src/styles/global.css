@@ -1,3 +1,9 @@
 .available-gamemode {
     color: blue;
+    cursor: pointer;
+}
+
+.unavailable-gamemode {
+    pointer-events: none;
+    cursor: default;
 }

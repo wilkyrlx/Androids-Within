@@ -5,7 +5,7 @@ import { createGameBackend, joinGameBackend } from "../scripts/backendInteractio
 
 
 
-function HostDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom: any, setPlayerID: any }) {
+function HostDetails({ setView, setRoom, setPlayerID, setHost }: { setView: any, setRoom: any, setPlayerID: any, setHost: any }) {
 
     const [playerCount, setPlayerCount] = useState<string>('');
 
@@ -15,6 +15,7 @@ function HostDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom:
         const playerID: number = await joinGameBackend(roomID.toString());  
         setRoom(roomID);
         setPlayerID(playerID);
+        setHost(true);
         setView(pageView.GAMEMODE_SELECT);
     }
 
