@@ -15,12 +15,20 @@ async function joinGameBackend(roomCode: string): Promise<number> {
 }
 
 async function awaitingPlayersBackend(roomCode: string): Promise<any> {
+    console.log("awaitingPlayersBackend");
     const url = process.env.REACT_APP_API_URL + "/api/game-status/" + roomCode;
     const rawResponse = await fetch(url);
     const response = await rawResponse.json();
-    // console.log(response.message);
-
+    // console.log(response);
     return response;
 }
 
-export { createGameBackend, joinGameBackend, awaitingPlayersBackend };
+async function getRoleBackend(roomCode: string, playerID: number): Promise<any> {
+    const url = process.env.REACT_APP_API_URL + "/api/get-role/" + roomCode + "/" + playerID.toString();
+    const rawResponse = await fetch(url);
+    const response = await rawResponse.json();
+    // console.log(response);
+    return response;
+}
+
+export { createGameBackend, joinGameBackend, awaitingPlayersBackend, getRoleBackend };

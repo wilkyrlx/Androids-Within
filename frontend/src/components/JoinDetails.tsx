@@ -2,13 +2,14 @@ import { useState } from "react";
 import { pageView } from "../types/pageView";
 import { joinGameBackend } from "../scripts/backendInteraction";
 
-function JoinDetails({ setView, setRoom }: { setView: any, setRoom: any }) {
+function JoinDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom: any, setPlayerID: any }) {
 
     const [roomCode, setRoomCode] = useState<string>('');
 
     async function joinGame() {
         const playerID: number = await joinGameBackend(roomCode);
         setRoom(roomCode);
+        setPlayerID(playerID);
         setView(pageView.GAMEMODE_SELECT);
     }
 
