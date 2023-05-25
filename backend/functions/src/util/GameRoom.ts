@@ -1,3 +1,6 @@
+import gemini from "../games/gemini";
+import sleeperCells from "../games/sleeperCells";
+import { shuffleArray } from "../types/IGameRules";
 import Player from "./Player";
 
 /**
@@ -17,6 +20,7 @@ class GameRoom {
     gameMode: number;
     numPlayers: number;     
     status: string;
+    assignments: { [key: number]: string };
 
     constructor(id: number, sheetID: string, numPlayers: number, status: string) {
         this.id = id;
@@ -24,7 +28,8 @@ class GameRoom {
         this.players = [];
         this.gameMode = 0;
         this.numPlayers = numPlayers;
-        this.status = status;            
+        this.status = status;   
+        this.assignments = {};         
     }
 
 
@@ -38,6 +43,36 @@ class GameRoom {
     removePlayer(player: Player) {
         this.players = this.players.filter(p => p.id !== player.id);
     }   
+
+    generateRoles() {
+        const array = [];
+        for (let i = 1; i <= this.numPlayers; i++) {
+            array.push(i);
+        }
+    
+        const shuffledArray = shuffleArray(array);
+        let assignments = {};
+        switch (this.gameMode) {
+            case 1:
+                assignments = new sleeperCells(shuffledArray).assignments;
+                break;
+            case 2:
+                // Gemini
+                assignments = new gemini(shuffledArray).assignments;
+                break;
+            case 3:
+                // Alone
+                assignments = new gemini(shuffledArray).assignments;
+                break;
+    
+            default:
+                console.log("Invalid game mode");
+                break;
+        }
+
+        this.assignments = assignments;
+    
+    }
 
 }
 

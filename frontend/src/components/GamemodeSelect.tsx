@@ -40,6 +40,7 @@ function GamemodeSelect({ setView, room, isHost }: { setView: any, room: number,
     }
 
     function startGame() {
+        console.log("starting game");
         if (selectedGamemode) {
             console.log("starting game with gamemode " + selectedGamemode.name);
             setGamemodeBackend(room.toString(), selectedGamemode.code);
@@ -66,13 +67,13 @@ function GamemodeSelect({ setView, room, isHost }: { setView: any, room: number,
                     <li 
                     key={gamemode.code} 
                     className={availableGamemodeClass(gamemode)} 
-                    onClick={() => updateGamemode(gamemode)}>
+                    onClick={() => setSelectedGamemode(gamemode)}>
                         {gamemode.name}
                     </li>
                 ))}
             </ul>
             
-            { isHost && <button id="start-game-btn" onClick={() => startGame()} disabled={true}>Start Game</button> }
+            { isHost && <button id="start-game-btn" onClick={() => startGame()}>Start Game</button> }
             { !isHost && <button onClick={() => setView(pageView.WAITING)}>Join Lobby</button> }
         </div>
     )

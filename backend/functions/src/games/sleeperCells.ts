@@ -1,4 +1,4 @@
-import { IGameRules, shuffleArray } from "../types/IGameRules";
+import { IGameRules } from "../types/IGameRules";
 
 class sleeperCells implements IGameRules {
     players: number[];
@@ -11,19 +11,19 @@ class sleeperCells implements IGameRules {
     }
 
     assignRoles() {
-        // randomly shuffle players
-        const shuffledPlayers = shuffleArray(this.players);
 
-        const recruitsCount = shuffledPlayers.length - 2;
+        const recruitsCount = this.players.length - 2;
         const aRecruitsCount = recruitsCount / 2;
         const bRecruitsCount = recruitsCount / 2;
 
         // assign roles
-        this.assignments[shuffledPlayers[0]] = "Leader. Your recruits: " + shuffledPlayers.slice(2, 2 + aRecruitsCount).toString();
-        this.assignments[shuffledPlayers[1]] = "Leader, Your recruits: " + shuffledPlayers.slice(2 + aRecruitsCount, 2 + aRecruitsCount + bRecruitsCount).toString();
+        this.assignments[this.players[0]] = "Leader. Your recruits: " + this.players.slice(2, 2 + aRecruitsCount).toString();
+        this.assignments[this.players[1]] = "Leader, Your recruits: " + this.players.slice(2 + aRecruitsCount, 2 + aRecruitsCount + bRecruitsCount).toString();
         for (let i = 2; i < this.players.length; i++) {
-            this.assignments[shuffledPlayers[i]] = "Recruit";
+            this.assignments[this.players[i]] = "Recruit";
         }
     }
 
 }
+
+export default sleeperCells;

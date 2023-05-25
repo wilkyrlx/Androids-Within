@@ -1,9 +1,5 @@
 import IGamemode from "../types/IGamemode";
 
-
-// TODO: fix this entire file, right now gamemodes are just hard coded
-
-
 function getAvailableGamemodes(players: number): IGamemode[] {
     const availableGamemodes: IGamemode[] = [];
     const allGamemodes: IGamemode[] = getAllGamemodes();
@@ -20,7 +16,8 @@ function getAvailableGamemodes(players: number): IGamemode[] {
 function getAllGamemodes(): IGamemode[] {
     const allGamemodes = [];
     // TODO: could make this a JSON
-    allGamemodes.push({ code: 1, name: "Sleeper Cells", description: "Sleeper Cells", allowedPlayers: [6, 8, 10, 12]});
+    // TODO: put this on frontend to decrease latency
+    allGamemodes.push({ code: 1, name: "Sleeper Cells", description: "Sleeper Cells", allowedPlayers: [6, 8, 10, 12] });
     allGamemodes.push({ code: 2, name: "Gemini", description: "Gemini", allowedPlayers: [6, 7, 8, 9, 10, 11, 12] });
     allGamemodes.push({ code: 3, name: "Alone", description: "Alone", allowedPlayers: [5, 6, 7, 8] });
     allGamemodes.push({ code: 4, name: "Extraction", description: "Extraction", allowedPlayers: [6, 7, 8, 9, 10, 11, 12] });
@@ -33,7 +30,7 @@ function getAllGamemodes(): IGamemode[] {
     allGamemodes.push({ code: 11, name: "Assassin", description: "Assassin", allowedPlayers: [6, 7, 8, 9, 10, 11, 12] });
     allGamemodes.push({ code: 12, name: "Code Talkers", description: "Code Talkers", allowedPlayers: [5, 6, 7, 8] });
     allGamemodes.push({ code: 13, name: "Kill Switch", description: "Kill Switch", allowedPlayers: [5, 6, 7, 8, 9] });
-    allGamemodes.push({ code: 14, name: "Self-Aware", description: "Self-Aware", allowedPlayers: [5, 6, 7, 8, 9] }); 
+    allGamemodes.push({ code: 14, name: "Self-Aware", description: "Self-Aware", allowedPlayers: [5, 6, 7, 8, 9] });
     allGamemodes.push({ code: 15, name: "Broken", description: "Broken", allowedPlayers: [5, 6, 7, 8, 9] });
     allGamemodes.push({ code: 16, name: "Hunted", description: "Hunted", allowedPlayers: [5, 6, 7, 8, 9] });
     allGamemodes.push({ code: 17, name: "Target X", description: "Target X", allowedPlayers: [5, 6, 7, 8, 9] });
@@ -42,5 +39,7 @@ function getAllGamemodes(): IGamemode[] {
     allGamemodes.push({ code: 20, name: "TEST ONE", description: "TEST ONE", allowedPlayers: [1] });
     return allGamemodes;
 }
+
+
 
 export { getAvailableGamemodes, getAllGamemodes };

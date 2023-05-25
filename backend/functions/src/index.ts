@@ -169,6 +169,7 @@ app.get('/api/set-gamemode/:roomID/:gamemode', (req: Request, res: Response) => 
 
     // set gamemode
     gameRooms[roomIDNum].gameMode = gamemodeNum;
+    gameRooms[roomIDNum].generateRoles();
 
     // Return the game room
     res.status(200).json({ gameRoom: gameRooms[roomIDNum] });
@@ -198,10 +199,10 @@ app.get('/api/get-role/:roomID/:playerID', (req: Request, res: Response) => {
         return;
     }
 
-    const player: Player = gameRooms[roomIDNum].players[playerIDNum];
+    const role = gameRooms[roomIDNum].assignments[playerIDNum];
 
     // Return the role
-    res.status(200).json({ name: player.name, role: player.role });
+    res.status(200).json({ name: playerIDNum, role: role });
 });
 
     
