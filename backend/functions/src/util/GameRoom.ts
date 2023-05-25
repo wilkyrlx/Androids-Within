@@ -1,7 +1,5 @@
-import gemini from "../games/2gemini";
-import sleeperCells from "../games/1sleeperCells";
+import { sleeperCells, gemini, alone } from "../games/gameExports";
 import { shuffleArray } from "../types/IGameRules";
-import Player from "./Player";
 
 /**
  * Represents a game room
@@ -63,7 +61,7 @@ class GameRoom {
                 break;
             case 3:
                 // Alone
-                assignments = new gemini(shuffledArray).assignments;
+                assignments = new alone(shuffledArray).assignments;
                 break;
     
             default:

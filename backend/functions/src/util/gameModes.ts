@@ -36,7 +36,6 @@ function getAllGamemodes(): IGamemode[] {
     allGamemodes.push({ code: 17, name: "Target X", description: "Target X", allowedPlayers: [5, 6, 7, 8, 9] });
     allGamemodes.push({ code: 18, name: "Renegade", description: "Renegade", allowedPlayers: [5, 6, 7, 8, 9, 10] });
     allGamemodes.push({ code: 19, name: "One Among Us", description: "One Among Us", allowedPlayers: [5, 6, 7, 8] });
-    allGamemodes.push({ code: 20, name: "TEST ONE", description: "TEST ONE", allowedPlayers: [1] });
     return allGamemodes;
 }
 
