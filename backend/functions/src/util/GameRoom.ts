@@ -16,7 +16,7 @@ import Player from "./Player";
 class GameRoom {
     id: number;
     sheetID: string;
-    players: Player[];
+    players: number[];
     gameMode: number;
     numPlayers: number;     
     status: string;
@@ -33,15 +33,16 @@ class GameRoom {
     }
 
 
-    addPlayer(player: Player) {
+    addPlayer(player: number) {
         if (this.players.length >= this.numPlayers) {
             throw new Error("Game room is full");
         }
         this.players.push(player);
     }   
 
-    removePlayer(player: Player) {
-        this.players = this.players.filter(p => p.id !== player.id);
+    // FIXME: untested, unused
+    removePlayer(player: number) {
+        this.players = this.players.filter(p => p !== player);
     }   
 
     generateRoles() {

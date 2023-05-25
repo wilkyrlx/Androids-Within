@@ -1,4 +1,6 @@
 
+// FIXME: currently unused, might want to delete later
+
 /**
  * Player class, represents an individual player
  * 

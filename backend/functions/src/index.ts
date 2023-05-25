@@ -90,10 +90,9 @@ app.get('/api/join-game/:roomID', (req: Request, res: Response) => {
 
     // Create a new player
     const playerID = gameRoom.players.length;   // TODO: in the future, playerID could be chosen by the player
-    const newPlayer: Player = new Player(playerID);
 
     // Add the player to the game room
-    gameRoom.addPlayer(newPlayer);
+    gameRoom.addPlayer(playerID);
 
     // Return the playerID
     res.status(200).json({ playerID: playerID });
