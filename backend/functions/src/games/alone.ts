@@ -1,6 +1,6 @@
 import { IGameRules, shuffleArray } from "../types/IGameRules";
 
-class gemini implements IGameRules {
+class alone implements IGameRules {
     players: number[];
     assignments: { [key: number]: string };
 
@@ -17,14 +17,9 @@ class gemini implements IGameRules {
         const androidsCount = this.players.length - 2;
 
         // assign roles
-        this.assignments[shuffledPlayers[0]] = "Human";
-        this.assignments[shuffledPlayers[1]] = "Human";
-        for (let i = 2; i < shuffledPlayers.length; i++) {
-            let offset = i + 1;
-            if (offset == shuffledPlayers.length) {
-                offset = 2;
-            }
-            this.assignments[shuffledPlayers[i]] = "Android. Partner: " + shuffledPlayers[offset];
+        this.assignments[shuffledPlayers[0]] = "Target: " + shuffledPlayers[1]; 
+        for (let i = 1; i < shuffledPlayers.length; i++) {
+            this.assignments[shuffledPlayers[i]] = "Target: " + shuffledPlayers[0];
         }
     }
 

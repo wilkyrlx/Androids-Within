@@ -1,4 +1,4 @@
-import { IGameRules, shuffleArray } from "./IGameRules";
+import { IGameRules, shuffleArray } from "../types/IGameRules";
 
 class sleeperCells implements IGameRules {
     players: number[];
