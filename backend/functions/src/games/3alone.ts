@@ -1,10 +1,10 @@
 import { IGameRules } from "../types/IGameRules";
 
 class alone implements IGameRules {
-    players: number[];
-    assignments: { [key: number]: string };
+    players: string[];
+    assignments: { [key: string]: string };
 
-    constructor(players: number[]) {
+    constructor(players: string[]) {
         this.players = players;
         this.assignments = {};
         this.assignRoles();

@@ -18,7 +18,7 @@ class GameRoom {
     gameMode: number;
     numPlayers: number;     
     status: string;
-    assignments: { [key: number]: string };
+    assignments: { [key: string]: string };
 
     constructor(id: number, sheetID: string, numPlayers: number, status: string) {
         this.id = id;
@@ -44,12 +44,15 @@ class GameRoom {
     }   
 
     generateRoles() {
-        const array = [];
-        for (let i = 1; i <= this.numPlayers; i++) {
-            array.push(i);
+
+        // generates a random string of letters A onwards for each player
+        const array: string[] = [];
+        for (let i = 0; i < this.numPlayers; i++) {
+            const letter = String.fromCharCode(65 + i);
+            array.push(letter);
         }
-    
         const shuffledArray = shuffleArray(array);
+
         let assignments = {};
         switch (this.gameMode) {
             case 1:
