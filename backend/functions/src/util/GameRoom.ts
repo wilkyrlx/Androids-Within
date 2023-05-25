@@ -1,5 +1,5 @@
-import gemini from "../games/gemini";
-import sleeperCells from "../games/sleeperCells";
+import gemini from "../games/2gemini";
+import sleeperCells from "../games/1sleeperCells";
 import { shuffleArray } from "../types/IGameRules";
 import Player from "./Player";
 
