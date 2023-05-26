@@ -10,8 +10,8 @@ class extraction implements IGameRules {
         this.assignRoles();
     }
 
+    // Status: ready for testing
     assignRoles() {
-
 
         // assign roles
         this.assignments[this.players[0]] = "Hostage"; 

@@ -10,6 +10,7 @@ class gemini implements IGameRules {
         this.assignRoles();
     }
 
+    // Status: ready for testing
     assignRoles() {
 
         // assign roles

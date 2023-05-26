@@ -10,6 +10,7 @@ class alone implements IGameRules {
         this.assignRoles();
     }
 
+    // Status: ready for testing
     assignRoles() {
 
         const androidsCount = this.players.length - 2;

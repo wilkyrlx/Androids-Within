@@ -10,6 +10,7 @@ class sleeperCells implements IGameRules {
         this.assignRoles();
     }
 
+    // Status: ready for testing
     assignRoles() {
 
         const recruitsCount = this.players.length - 2;
