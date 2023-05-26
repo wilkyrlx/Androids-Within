@@ -14,10 +14,10 @@ class infiltrator implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[1]] = "Infiltrator";
+        this.assignments[this.players[0]] = "Infiltrator";
         this.assignments[this.players[1]] = "Android. Your or Following is leader: " + this.players[2];
 
-        for (let i = 1; i < this.players.length; i++) {
+        for (let i = 2; i < this.players.length; i++) {
             this.assignments[this.players[i]] = "Android. Your or Following is leader: " + this.players[1];
         }
     }
