@@ -7,9 +7,9 @@ import { pageView } from "../types/pageView";
 function Landing({ setView }: { setView: any }) {
 
     return (
-        <div id="landing">
-            <button onClick={() => setView(pageView.HOST_DETAILS)}> Create Game </button>
-            <button onClick={() => setView(pageView.JOIN_DETAILS)}> Join Game </button>
+        <div id="landing" className="container">
+            <button className="button" onClick={() => setView(pageView.HOST_DETAILS)}> Create Game </button>
+            <button className="button" onClick={() => setView(pageView.JOIN_DETAILS)}> Join Game </button>
         </div>
     )
 }

@@ -20,7 +20,7 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost }: { setView: any,
     }
 
     return (
-        <div id="host-details">
+        <div id="host-details" className="container">
             <input
                 id="player-count"
                 type="text"
@@ -28,7 +28,7 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost }: { setView: any,
                 value={playerCount}
                 onChange={ (ev) => setPlayerCount(ev.target.value)}
             />            
-            <button onClick={() => startGame()}>Start Game</button>
+            <button className="button" onClick={() => startGame()}>Start Game</button>
         </div>
     )
 }

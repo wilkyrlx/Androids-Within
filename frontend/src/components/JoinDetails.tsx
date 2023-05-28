@@ -14,7 +14,7 @@ function JoinDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom:
     }
 
     return (
-        <div id="join-details">
+        <div id="join-details" className="container">
             <input
                 id="join-code"
                 type="text"
@@ -22,7 +22,7 @@ function JoinDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom:
                 value={roomCode}
                 onChange={ (ev) => setRoomCode(ev.target.value)}
             /> 
-            <button onClick={() => joinGame()}>Join Game</button>
+            <button className="button" onClick={() => joinGame()}>Join Game</button>
         </div>
     )
 }

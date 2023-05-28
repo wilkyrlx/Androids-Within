@@ -17,7 +17,7 @@ function Playing({ setView, room, playerID }: { setView: any, room: number, play
     }, []);
     
     return (
-        <div id="playing">
+        <div id="playing" className="container">
             <p> Playing the game </p>
             <p> Player ID: {playerID} </p>
             <p> Name: {name} </p>
