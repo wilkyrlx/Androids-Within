@@ -13,8 +13,6 @@ class alone implements IGameRules {
     // Status: ready for testing
     assignRoles() {
 
-        const androidsCount = this.players.length - 2;
-
         // assign roles
         this.assignments[this.players[0]] = "Target: " + this.players[1]; 
         for (let i = 1; i < this.players.length; i++) {
