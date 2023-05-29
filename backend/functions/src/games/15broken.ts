@@ -1,6 +1,6 @@
 import { IGameRules } from "../types/IGameRules";
 
-class selfAware implements IGameRules {
+class broken implements IGameRules {
     players: string[];
     assignments: { [key: string]: string };
 
@@ -26,4 +26,4 @@ class selfAware implements IGameRules {
 
 }
 
-export default selfAware;
+export default broken;
