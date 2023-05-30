@@ -14,7 +14,7 @@ class doubleAgentII implements IGameRules {
     assignRoles() {
 
         // assign roles
-        // TODO: complex gamemode
+        // TODO: complex gamemode, need to finish this
     }
 
 }

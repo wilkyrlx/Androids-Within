@@ -14,7 +14,9 @@ enum pageView {
     GAMEMODE_SELECT,
     JOIN_DETAILS,
     WAITING,    // TODO: may be unused
-    PLAYING
+    PLAYING,
+    TIMER,
+    ALL_ROLES,
 }
 
 export { pageView }
@@ -24,7 +26,7 @@ export { pageView }
 
                HOST_DETAILS   
             /               \
-    LANDING                     GAMEMODE_SELECT (host/join) -> WAITING -> PLAYING
+    LANDING                     GAMEMODE_SELECT (host/join) -> WAITING -> PLAYING -> TIMER -> ALL_ROLES
             \               /
                JOIN_DETAILS
 */

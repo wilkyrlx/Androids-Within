@@ -1,3 +1,4 @@
+import './styles/global.css';
 import React, { useState } from 'react';
 import { pageView } from './types/pageView';
 import Landing from './components/Landing';
@@ -6,7 +7,8 @@ import JoinDetails from './components/JoinDetails';
 import GamemodeSelect from './components/GamemodeSelect';
 import Waiting from './components/Waiting';
 import Playing from './components/Playing';
-import './styles/global.css';
+import AllRoles from './components/AllRoles';
+import Timer from './components/Timer';
 
 function App() {
     
@@ -20,9 +22,11 @@ function App() {
             { view === pageView.LANDING && <Landing setView={setView} /> }
             { view === pageView.HOST_DETAILS && <HostDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} setHost={setHost} /> }
             { view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} /> }
-            { view === pageView.GAMEMODE_SELECT && <GamemodeSelect setView={setView} room={room} isHost={isHost}/> }
+            { view === pageView.GAMEMODE_SELECT && <GamemodeSelect setView={setView} room={room} isHost={isHost} /> }
             { view === pageView.WAITING && <Waiting setView={setView} room={room} /> }
             { view === pageView.PLAYING && <Playing setView={setView} room={room} playerID={playerID} /> }
+            { view === pageView.TIMER && <AllRoles /> }
+            { view === pageView.ALL_ROLES && <Timer /> }
         </div>
     );
 }

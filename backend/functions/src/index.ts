@@ -205,6 +205,17 @@ app.get('/api/get-role/:roomID/:playerID', (req: Request, res: Response) => {
     res.status(200).json({ name: playerIDNum, role: role });
 });
 
+/** get-all-roles endpoint */
+app.get('/api/get-all-roles/:roomID', (req: Request, res: Response) => {
+    const { roomID } = req.params;
+
+    const roomIDNum: number = isValidRoom(roomID, res) as number;
+
+    // Return the assignments
+    res.status(200).json({ assignments: gameRooms[roomIDNum].assignments });
+});
+    
+
     
 
 
