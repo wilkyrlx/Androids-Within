@@ -6,7 +6,7 @@ import { setGamemodeBackend } from "../scripts/backendInteraction";
 
 
 
-function GamemodeSelect({ setView, room, isHost }: { setView: any, room: number, isHost: boolean }) {
+function GamemodeSelect({ setView, room }: { setView: any, room: number }) {
 
     const [gamemodes, setGamemodes] = useState<IGamemode[]>([]);
     const [availableGamemodesID, setAvailableGamemodesID] = useState<number[]>([]);
@@ -73,8 +73,7 @@ function GamemodeSelect({ setView, room, isHost }: { setView: any, room: number,
                 ))}
             </ul>
             
-            { isHost && <button id="start-game-btn" onClick={() => startGame()}>Start Game</button> }
-            { !isHost && <button onClick={() => setView(pageView.WAITING)}>Join Lobby</button> }
+            <button id="start-game-btn" onClick={() => startGame()}>Start Game</button>
         </div>
     )
 }

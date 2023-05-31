@@ -10,7 +10,7 @@ function JoinDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom:
         const playerID: number = await joinGameBackend(roomCode);
         setRoom(roomCode);
         setPlayerID(playerID);
-        setView(pageView.GAMEMODE_SELECT);
+        setView(pageView.WAITING);
     }
 
     return (

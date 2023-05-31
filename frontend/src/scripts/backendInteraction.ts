@@ -31,6 +31,14 @@ async function getRoleBackend(roomCode: string, playerID: number): Promise<any> 
     return response;
 }
 
+async function getAllRolesBackend(roomCode: string): Promise<any> {
+    const url = process.env.REACT_APP_API_URL + "/api/get-all-roles/" + roomCode;
+    const rawResponse = await fetch(url);
+    const response = await rawResponse.json();
+    // console.log(response);
+    return response;
+}
+
 async function setGamemodeBackend(roomCode: string, gamemode: number): Promise<any> {
     const url = process.env.REACT_APP_API_URL + "/api/set-gamemode/" + roomCode + "/" + gamemode.toString();
     const rawResponse = await fetch(url);
@@ -40,4 +48,4 @@ async function setGamemodeBackend(roomCode: string, gamemode: number): Promise<a
 }
 
 
-export { createGameBackend, joinGameBackend, awaitingPlayersBackend, getRoleBackend, setGamemodeBackend };
+export { createGameBackend, joinGameBackend, awaitingPlayersBackend, getRoleBackend, getAllRolesBackend, setGamemodeBackend };

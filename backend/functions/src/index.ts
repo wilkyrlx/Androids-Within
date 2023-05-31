@@ -202,7 +202,7 @@ app.get('/api/get-role/:roomID/:playerID', (req: Request, res: Response) => {
     const role = gameRooms[roomIDNum].assignments[letter];
 
     // Return the role
-    res.status(200).json({ name: playerIDNum, role: role });
+    res.status(200).json({ name: letter, role: role });
 });
 
 /** get-all-roles endpoint */
