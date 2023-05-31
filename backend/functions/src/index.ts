@@ -2,8 +2,6 @@ import * as functions from "firebase-functions";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import GameRoom from "./util/GameRoom";
-import Player from "./util/Player";
-import { getAvailableGamemodes, getAllGamemodes } from "./util/gameModes";
 import WebSocket from "ws";
 
 // ========================== Setup ============================================
@@ -107,30 +105,6 @@ app.get('/api/get-game/:roomID', (req: Request, res: Response) => {
 
     // Return the game room
     res.status(200).json({ gameRoom: gameRooms[roomIDNum] });
-});
-
-/** get-gamemodes endpoint, returns list of all gamemodes and their descriptions
- * NOTE: this is a list of all gamemodes, including ones that may not be available
- * for the current number of players
-*/
-app.get('/api/get-gamemodes', (req: Request, res: Response) => {
-    const gamemodes = getAllGamemodes();
-
-    res.status(200).json({ gamemodes: gamemodes });
-});
-
-/** get-available-gamemodes endpoint, returns list of possible gamemodes for a given room */
-app.get('/api/get-available-gamemodes/:roomID', (req: Request, res: Response) => {
-    const { roomID } = req.params;
-
-    const roomIDNum: number = isValidRoom(roomID, res) as number;
-
-    // return available gamemodes for the game room
-    const players: number = gameRooms[roomIDNum].numPlayers;
-    const availableGamemodes = getAvailableGamemodes(players);
-
-    res.status(200).json({ gamemodes: availableGamemodes });
-
 });
 
 /** game-status endpoint, returns how many players have joined out of the total */

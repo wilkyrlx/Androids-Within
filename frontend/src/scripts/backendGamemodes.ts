@@ -1,21 +1,22 @@
 import IGamemode from "../types/IGamemode";
+import allGamemodes from "../data/allGamemodes.json";
 
 // get all possible gamemodes from the backend
-async function getAllGamemodes(): Promise<IGamemode[]> {
-    const url = process.env.REACT_APP_API_URL + "/api/get-gamemodes";
-    const rawResponse = await fetch(url);
-    const response = await rawResponse.json();
-    // console.log(response.gamemodes);
-    return response.gamemodes;
+function getAllGamemodes(): IGamemode[] {
+    return allGamemodes;
 }
 
 // get all available gamemodes from the backend
-async function getAvailableGamemodes(roomID: number): Promise<IGamemode[]> {
-    const url = process.env.REACT_APP_API_URL + "/api/get-available-gamemodes/" + roomID.toString();
-    const rawResponse = await fetch(url);
-    const response = await rawResponse.json();
-    // console.log(response.gamemodes);
-    return response.gamemodes;
+function getAvailableGamemodes(playerCount: number): IGamemode[] {
+    const availableGamemodes: IGamemode[] = [];
+    const allGamemodes: IGamemode[] = getAllGamemodes();
+    for (const gamemode of allGamemodes) {
+        if (gamemode.allowedPlayers.includes(playerCount)) {
+            availableGamemodes.push(gamemode);
+        }
+    }
+
+    return availableGamemodes;
 }
 
 export { getAllGamemodes, getAvailableGamemodes };

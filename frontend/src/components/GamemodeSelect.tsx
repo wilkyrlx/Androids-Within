@@ -6,19 +6,19 @@ import { setGamemodeBackend } from "../scripts/backendInteraction";
 
 
 
-function GamemodeSelect({ setView, room }: { setView: any, room: number }) {
+function GamemodeSelect({ setView, room, playerCount }: { setView: any, room: number, playerCount: number }) {
 
     const [gamemodes, setGamemodes] = useState<IGamemode[]>([]);
     const [availableGamemodesID, setAvailableGamemodesID] = useState<number[]>([]);
     const [selectedGamemode, setSelectedGamemode] = useState<IGamemode | null>(null);
 
     useEffect(() => {
-        async function fetchGamemodes() {
-            const gamemodes = await getAllGamemodes();
+        function fetchGamemodes() {
+            const gamemodes = getAllGamemodes();
             setGamemodes(gamemodes);
         }
-        async function fetchAvailableGamemodes() {
-            const availableGamemodes = await getAvailableGamemodes(room);
+        function fetchAvailableGamemodes() {
+            const availableGamemodes = getAvailableGamemodes(playerCount);
             const tempAvailableGamemodesID: number[] = [];
             for (let i = 0; i < availableGamemodes.length; i++) {
                 tempAvailableGamemodesID.push(availableGamemodes[i].code);
