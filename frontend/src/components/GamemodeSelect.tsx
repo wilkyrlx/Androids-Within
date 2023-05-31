@@ -6,7 +6,7 @@ import { setGamemodeBackend } from "../scripts/backendInteraction";
 
 
 
-function GamemodeSelect({ setView, room, playerCount }: { setView: any, room: number, playerCount: number }) {
+function GamemodeSelect({ setView, room, playerCount, setDuration }: { setView: any, room: number, playerCount: number, setDuration: any }) {
 
     const [gamemodes, setGamemodes] = useState<IGamemode[]>([]);
     const [availableGamemodesID, setAvailableGamemodesID] = useState<number[]>([]);
@@ -44,6 +44,7 @@ function GamemodeSelect({ setView, room, playerCount }: { setView: any, room: nu
         if (selectedGamemode) {
             console.log("starting game with gamemode " + selectedGamemode.name);
             setGamemodeBackend(room.toString(), selectedGamemode.code);
+            setDuration(selectedGamemode.timer);
             setView(pageView.WAITING);
         } else {
             console.log("no gamemode selected");

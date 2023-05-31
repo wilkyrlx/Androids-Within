@@ -9,7 +9,7 @@
             10,
             12
         ],
-        "timer": 0
+        "timer": 1
     },
     {
         "code": 2,
@@ -253,5 +253,14 @@
             8
         ],
         "timer": 0
+    },
+    {
+        "code": 20,
+        "name": "TESTING ONLY",
+        "description": "TESTING ONLY",
+        "allowedPlayers": [
+            1
+        ],
+        "timer": 1
     }
 ]
