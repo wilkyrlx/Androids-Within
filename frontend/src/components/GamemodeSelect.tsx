@@ -53,28 +53,41 @@ function GamemodeSelect({ setView, room, playerCount, setDuration }: { setView: 
     }
 
     function updateGamemode(gamemode: IGamemode) {
-        setSelectedGamemode(gamemode);
-        const startGameBtn: HTMLButtonElement | null = document.getElementById("start-game-btn") as HTMLButtonElement;
-        if (startGameBtn) {
-            startGameBtn.disabled = false;
+        // get rid of the selected gamemode class from the previous gamemode
+        if (selectedGamemode) {
+            const selectedGamemodeElement: HTMLElement | null = document.getElementById(selectedGamemode.code.toString());
+            if (selectedGamemodeElement) {
+                selectedGamemodeElement.classList.remove("selected-gamemode");
+            }
         }
+
+        setSelectedGamemode(gamemode);
+
+        // add the selected gamemode class to the new gamemode
+        const selectedGamemodeElement: HTMLElement | null = document.getElementById(gamemode.code.toString());
+        if (selectedGamemodeElement) {
+            selectedGamemodeElement.classList.add("selected-gamemode");
+        }
+        const startGameBtn: HTMLButtonElement = document.getElementById("start-game-btn") as HTMLButtonElement;
+        startGameBtn.classList.remove("btn-disabled");
     }
 
     return (
-        <div id="gamemode-select">
+        <div id="gamemode-select" className="container">
             <p> select your gamemode </p>
             <ul>
                 {gamemodes.map((gamemode: IGamemode) => (
                     <li 
                     key={gamemode.code} 
+                    id={gamemode.code.toString()}
                     className={availableGamemodeClass(gamemode)} 
-                    onClick={() => setSelectedGamemode(gamemode)}>
+                    onClick={() => updateGamemode(gamemode)}>
                         {gamemode.name}
                     </li>
                 ))}
             </ul>
             
-            <button id="start-game-btn" onClick={() => startGame()}>Start Game</button>
+            <button id="start-game-btn" className="btn-disabled" onClick={() => startGame()}>Start Game</button>
         </div>
     )
 }

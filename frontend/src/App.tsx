@@ -1,4 +1,5 @@
 import './styles/global.css';
+import './styles/functional.css';
 import React, { useState } from 'react';
 import { pageView } from './types/pageView';
 import Landing from './components/Landing';
@@ -9,6 +10,7 @@ import Waiting from './components/Waiting';
 import Playing from './components/Playing';
 import AllRoles from './components/AllRoles';
 import Timer from './components/Timer';
+import Header from './components/reusable/Header';
 
 function App() {
     
@@ -20,7 +22,8 @@ function App() {
     const [timerDuration, setDuration] = useState<number>(0);	// timer length (minutes)
 
     return (
-        <div id="App">
+        <div id="App" >
+            <Header />
             { view === pageView.LANDING && <Landing setView={setView} /> }
             { view === pageView.HOST_DETAILS && <HostDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} setHost={setHost} setPlayerCount={setPlayerCount} /> }
             { view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} /> }

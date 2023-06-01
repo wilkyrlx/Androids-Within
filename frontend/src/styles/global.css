@@ -1,17 +1,31 @@
-/* functional css - selectable gamemode */
-.available-gamemode {
-    color: blue;
-    cursor: pointer;
+
+body {
+    margin: 0px;
+    padding: 0px;
 }
 
-/* functional css - non-selectable gamemode */
-.unavailable-gamemode {
-    pointer-events: none;
-    cursor: default;
+#header {
+
+    background-color: #a32cd2;
+    width: 100%;
+    padding: 20px;
+}
+
+.gamemode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: #808080 1px solid;
+    border-radius: 25px;
+    width: 150px;
+    height: 17px;
+    margin-bottom: 5px;
+
 }
 
 
-.button {
+button {
     display: block;
     width: 150px;
     height: 50px;
@@ -20,6 +34,17 @@
     text-align: center;
     line-height: 50px;
     color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+input {
+    display: block;
+    width: auto;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 50px;
     font-size: 16px;
     margin-bottom: 10px;
 }

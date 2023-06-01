@@ -1,0 +1,25 @@
+/* functional css - selectable gamemode */
+.available-gamemode {
+    color: blue;
+    cursor: pointer;
+}
+
+/* functional css - selected gamemode */
+.selected-gamemode {
+    background-color: rgb(201, 160, 224);
+    cursor: pointer;
+}
+
+/* functional css - non-selectable gamemode */
+.unavailable-gamemode {
+    pointer-events: none;
+    cursor: default;
+    color: gray;
+}
+
+/* functional css - disabled button */
+.btn-disabled {
+    pointer-events: none;
+    cursor: default;
+    background-color: rgb(137, 44, 44);
+}

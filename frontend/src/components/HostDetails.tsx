@@ -11,7 +11,7 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
 
     // Create the game, then join it
     async function startGame() {
-        const roomID = await createGameBackend("1", parseInt(playerCountText));     // TODO: sheet code
+        const roomID = await createGameBackend("1", parseInt(playerCountText));     // TODO: remove sheet code
         const playerID: number = await joinGameBackend(roomID.toString());  
         setRoom(roomID);
         setPlayerID(playerID);
@@ -25,11 +25,11 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
             <input
                 id="player-count"
                 type="text"
-                placeholder="Enter Exact Number of Players"
+                placeholder="Enter Number of Players"
                 value={playerCountText}
                 onChange={ (ev) => setPlayerCountText(ev.target.value)}
             />            
-            <button className="button" onClick={() => startGame()}>Start Game</button>
+            <button onClick={() => startGame()}>Start Game</button>
         </div>
     )
 }
