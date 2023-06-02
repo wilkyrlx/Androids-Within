@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllRolesBackend } from "../scripts/backendInteraction";
+import { pageView } from "../types/pageView";
 
 // TODO: untested
 function AllRoles({ setView, room }: { setView: any, room: number }) {
@@ -30,6 +31,7 @@ function AllRoles({ setView, room }: { setView: any, room: number }) {
                     <li key={index}>Player: {role}</li>
                 ))}
             </ul>
+            <button onClick={() => setView(pageView.GAMEMODE_SELECT)}>Restart Game</button> 
         </div>
     )
 }

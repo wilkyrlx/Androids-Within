@@ -1,8 +1,9 @@
 import * as functions from "firebase-functions";
 import express, { Request, Response } from "express";
 import cors from "cors";
-import GameRoom from "./util/GameRoom";
+import GameRoom from "./types/GameRoom";
 import WebSocket from "ws";
+import { Status } from "./types/status";
 
 // ========================== Setup ============================================
 const corsOptions = {
@@ -57,7 +58,7 @@ app.get('/api/create-game/:sheetID/:numPlayers', (req: Request, res: Response) =
 
     // Create a new game room
     const roomID: number = numRooms;    // TODO: better way to generate a roomID, should be a 6 letter code
-    const newGameRoom = new GameRoom(roomID, sheetID, numPlayersNum, "waiting");
+    const newGameRoom = new GameRoom(roomID, sheetID, numPlayersNum);
 
     // Add the game room to the shared dictionary
     gameRooms[roomID] = newGameRoom;
@@ -114,11 +115,17 @@ app.get('/api/game-status/:roomID', (req: Request, res: Response) => {
     const roomIDNum: number = isValidRoom(roomID, res) as number;
 
     // return the number of players that have joined
-    const numPlayersActual: number = gameRooms[roomIDNum].players.length;
-    const numPlayersExpected: number = gameRooms[roomIDNum].numPlayers;
-    const status: string = numPlayersActual === numPlayersExpected ? "ready" : "waiting";
+    const room: GameRoom = gameRooms[roomIDNum];
+    const numPlayersActual: number = room.players.length;
+    const numPlayersExpected: number = room.numPlayers;
+    
+    let retStatus = "waiting"
+    if (room.status == Status.WAITING && numPlayersActual == numPlayersExpected) {
+        retStatus = "ready"
+        room.status = Status.READY;
+    }
 
-    res.status(200).json({ status: status, actualPlayers: numPlayersActual, expectedPlayers: numPlayersExpected });
+    res.status(200).json({ status: retStatus, actualPlayers: numPlayersActual, expectedPlayers: numPlayersExpected });
 
 });
 
@@ -141,11 +148,14 @@ app.get('/api/set-gamemode/:roomID/:gamemode', (req: Request, res: Response) => 
     }
 
     // set gamemode
-    gameRooms[roomIDNum].gameMode = gamemodeNum;
-    gameRooms[roomIDNum].generateRoles();
+    const room: GameRoom = gameRooms[roomIDNum];
+    room.gameMode = gamemodeNum;
+    room.generateRoles();
+
+    room.status = Status.WAITING;
 
     // Return the game room
-    res.status(200).json({ gameRoom: gameRooms[roomIDNum] });
+    res.status(200).json({ gameRoom: room });
 });
 
 /** get-role endpoint, gets the role for a player given a room and player ID */

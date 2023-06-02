@@ -1,5 +1,6 @@
 import { sleeperCells, gemini, alone, extraction, doubleAgent, infiltrator, noWayOut, chainOfCommand, rescue, doubleAgentII, assassin, codeTalkers, killSwitch, selfAware, broken, hunted, targetX, renegade, oneAmongUs } from "../games/gameExports";
-import { shuffleArray } from "../types/IGameRules";
+import { shuffleArray } from "./IGameRules";
+import { Status } from "./status";
 
 /**
  * Represents a game room
@@ -17,16 +18,16 @@ class GameRoom {
     players: number[];
     gameMode: number;
     numPlayers: number;     
-    status: string;
+    status: Status;
     assignments: { [key: string]: string };
 
-    constructor(id: number, sheetID: string, numPlayers: number, status: string) {
+    constructor(id: number, sheetID: string, numPlayers: number) {
         this.id = id;
         this.sheetID = sheetID;
         this.players = [];
         this.gameMode = 0;
         this.numPlayers = numPlayers;
-        this.status = status;   
+        this.status = Status.WAITING_ON_HOST;   
         this.assignments = {};         
     }
 
@@ -36,12 +37,7 @@ class GameRoom {
             throw new Error("Game room is full");
         }
         this.players.push(player);
-    }   
-
-    // FIXME: untested, unused
-    removePlayer(player: number) {
-        this.players = this.players.filter(p => p !== player);
-    }   
+    }     
 
     generateRoles() {
 
