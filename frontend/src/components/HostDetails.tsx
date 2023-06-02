@@ -11,13 +11,13 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
 
     // Create the game, then join it
     async function startGame() {
-        const roomID = await createGameBackend("1", parseInt(playerCountText));     // TODO: remove sheet code
+        const roomID = await createGameBackend("UNUSED", parseInt(playerCountText));     // TODO: remove sheet code
         const playerID: number = await joinGameBackend(roomID.toString());  
         setRoom(roomID);
         setPlayerID(playerID);
         setHost(true);
         setPlayerCount(parseInt(playerCountText));
-        setView(pageView.GAMEMODE_SELECT);
+        setView(pageView.ROOM_CODE);
     }
 
     return (
@@ -29,7 +29,7 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
                 value={playerCountText}
                 onChange={ (ev) => setPlayerCountText(ev.target.value)}
             />            
-            <button onClick={() => startGame()}>Start Game</button>
+            <button onClick={() => startGame()}>Create Game</button>
         </div>
     )
 }

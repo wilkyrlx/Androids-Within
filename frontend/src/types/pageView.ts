@@ -11,6 +11,7 @@
 enum pageView {
     LANDING,    
     HOST_DETAILS,
+    ROOM_CODE,
     GAMEMODE_SELECT,
     JOIN_DETAILS,
     WAITING,    // TODO: may be unused
@@ -24,9 +25,9 @@ export { pageView }
 /*
     Flow diagram for pageView states:
 
-               HOST_DETAILS -> GAMEMODE_SELECT                           TIMER (if necessary) -> ALL_ROLES -> (GAMEMODE_SELECT)
-            /                                 \                        /                                    
-    LANDING                                      -> WAITING -> PLAYING  
-            \                                 /                        \
-               JOIN_DETAILS --------------->                             WAITING 
+               HOST_DETAILS -> ROOM_CODE -> GAMEMODE_SELECT                           TIMER (if necessary) -> ALL_ROLES -> (GAMEMODE_SELECT)
+            /                                               \                        /                                    
+    LANDING                                                     -> WAITING -> PLAYING  
+            \                                               /                        \
+               JOIN_DETAILS ---------------------------->                             WAITING 
 */

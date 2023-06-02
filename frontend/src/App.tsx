@@ -11,6 +11,7 @@ import Playing from './components/Playing';
 import AllRoles from './components/AllRoles';
 import Timer from './components/Timer';
 import Header from './components/reusable/Header';
+import RoomCode from './components/RoomCode';
 
 function App() {
     
@@ -27,6 +28,7 @@ function App() {
             { view === pageView.LANDING && <Landing setView={setView} /> }
             { view === pageView.HOST_DETAILS && <HostDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} setHost={setHost} setPlayerCount={setPlayerCount} /> }
             { view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} /> }
+            { view === pageView.ROOM_CODE && <RoomCode setView={setView} room={room} /> }
             { view === pageView.GAMEMODE_SELECT && <GamemodeSelect setView={setView} room={room} playerCount={playerCount} setDuration={setDuration} /> }
             { view === pageView.WAITING && <Waiting setView={setView} room={room} /> }
             { view === pageView.PLAYING && <Playing setView={setView} room={room} playerID={playerID} isHost={isHost} timerDuration={timerDuration}/> }
