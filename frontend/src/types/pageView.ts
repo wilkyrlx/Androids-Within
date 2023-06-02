@@ -24,9 +24,9 @@ export { pageView }
 /*
     Flow diagram for pageView states:
 
-               HOST_DETAILS -> GAMEMODE_SELECT                           TIMER (if necessary) -> ALL_ROLES
-            /                                 \                        /
+               HOST_DETAILS -> GAMEMODE_SELECT                           TIMER (if necessary) -> ALL_ROLES -> (GAMEMODE_SELECT)
+            /                                 \                        /                                    
     LANDING                                      -> WAITING -> PLAYING  
-            \                                 /              
-               JOIN_DETAILS --------------->
+            \                                 /                        \
+               JOIN_DETAILS --------------->                             WAITING 
 */
