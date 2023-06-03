@@ -9,7 +9,7 @@
             10,
             12
         ],
-        "timer": 1
+        "timer": 0
     },
     {
         "code": 2,
@@ -36,7 +36,7 @@
             7,
             8
         ],
-        "timer": 0
+        "timer": 1
     },
     {
         "code": 4,
@@ -51,7 +51,7 @@
             11,
             12
         ],
-        "timer": 0
+        "timer": 1
     },
     {
         "code": 5,
@@ -63,7 +63,7 @@
             9,
             11
         ],
-        "timer": 0
+        "timer": 1
     },
     {
         "code": 6,
@@ -95,7 +95,7 @@
             11,
             12
         ],
-        "timer": 0
+        "timer": 1
     },
     {
         "code": 8,
@@ -134,7 +134,7 @@
             9,
             11
         ],
-        "timer": 0
+        "timer": 1
     },
     {
         "code": 11,
@@ -200,7 +200,7 @@
             8,
             9
         ],
-        "timer": 0
+        "timer": 1
     },
     {
         "code": 16,
@@ -259,7 +259,9 @@
         "name": "TESTING ONLY",
         "description": "TESTING ONLY",
         "allowedPlayers": [
-            1
+            1,
+            2,
+            3
         ],
         "timer": 1
     }

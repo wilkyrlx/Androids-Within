@@ -1,8 +1,6 @@
 enum Status {
     WAITING_ON_HOST,
     WAITING,
-    READY,
-    PLAYING
 }
 
 export { Status }

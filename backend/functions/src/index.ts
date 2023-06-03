@@ -122,7 +122,6 @@ app.get('/api/game-status/:roomID', (req: Request, res: Response) => {
     let retStatus = "waiting"
     if (room.status == Status.WAITING && numPlayersActual == numPlayersExpected) {
         retStatus = "ready"
-        room.status = Status.READY;
     }
 
     res.status(200).json({ status: retStatus, actualPlayers: numPlayersActual, expectedPlayers: numPlayersExpected });
@@ -153,6 +152,19 @@ app.get('/api/set-gamemode/:roomID/:gamemode', (req: Request, res: Response) => 
     room.generateRoles();
 
     room.status = Status.WAITING;
+
+    // Return the game room
+    res.status(200).json({ gameRoom: room });
+});
+
+app.get('/api/reset-status/:roomID', (req: Request, res: Response) => {
+    const { roomID, gamemode } = req.params;
+
+    // Check if roomID is valid
+    const roomIDNum: number = isValidRoom(roomID, res) as number;
+
+    const room: GameRoom = gameRooms[roomIDNum];
+    room.status = Status.WAITING_ON_HOST;
 
     // Return the game room
     res.status(200).json({ gameRoom: room });
