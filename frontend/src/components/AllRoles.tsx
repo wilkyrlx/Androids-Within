@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllRolesBackend, resetStatusBackend } from "../scripts/backendInteraction";
+import { getAllRolesBackend, resetStatusBackend } from "../utils/backendInteraction";
 import { pageView } from "../types/pageView";
 
 function AllRoles({ setView, room }: { setView: any, room: number }) {

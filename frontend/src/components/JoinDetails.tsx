@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { pageView } from "../types/pageView";
-import { joinGameBackend } from "../scripts/backendInteraction";
+import { joinGameBackend } from "../utils/backendInteraction";
 
 function JoinDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom: any, setPlayerID: any }) {
 

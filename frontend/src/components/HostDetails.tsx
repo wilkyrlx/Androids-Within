@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { pageView } from "../types/pageView";
-import { createGameBackend, joinGameBackend } from "../scripts/backendInteraction";
+import { createGameBackend, joinGameBackend } from "../utils/backendInteraction";
 
 
 

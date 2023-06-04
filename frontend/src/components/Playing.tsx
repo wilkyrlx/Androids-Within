@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getRoleBackend } from "../scripts/backendInteraction";
+import { getRoleBackend } from "../utils/backendInteraction";
 import { pageView } from "../types/pageView";
 
 // TODO: add the gamemode

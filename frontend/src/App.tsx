@@ -13,6 +13,7 @@ import AllRoles from './components/AllRoles';
 import Timer from './components/Timer';
 import Header from './components/reusable/Header';
 import RoomCode from './components/RoomCode';
+import Test from './components/test';
 
 function App() {
     
@@ -26,7 +27,8 @@ function App() {
     return (
         <div id="App" >
             <Header />
-            { view === pageView.LANDING && <Landing setView={setView} /> }
+            <Test />
+            {/* { view === pageView.LANDING && <Landing setView={setView} /> }
             { view === pageView.HOST_DETAILS && <HostDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} setHost={setHost} setPlayerCount={setPlayerCount} /> }
             { view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} /> }
             { view === pageView.ROOM_CODE && <RoomCode setView={setView} room={room} /> }
@@ -34,7 +36,7 @@ function App() {
             { view === pageView.WAITING && <Waiting setView={setView} room={room} /> }
             { view === pageView.PLAYING && <Playing setView={setView} room={room} playerID={playerID} isHost={isHost} timerDuration={timerDuration}/> }
             { view === pageView.TIMER && <Timer setView={setView} timerDuration={timerDuration} /> }
-            { view === pageView.ALL_ROLES && <AllRoles setView={setView} room={room} /> }
+            { view === pageView.ALL_ROLES && <AllRoles setView={setView} room={room} /> } */}
         </div>
     );
 }
