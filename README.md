@@ -1,3 +1,3 @@
 # android-game
-Deploy Status (frontend): need to deploy
-Deploy Status (backend): need to deploy
+- Deploy Status (frontend): needs to be deployed
+- Deploy Status (backend): needs to be deployed 

@@ -10,8 +10,6 @@ function Waiting({ setView, room }: { setView: any, room: number}) {
     const [expectedPlayers, setExpectedPlayers] = useState<string>('0');
 
     async function checkGameStatus() {
-        var i = 0;
-        console.log("checking game status" + i.toString());
         const gameStatus: any = await awaitingPlayersBackend(room.toString());
         if (gameStatus.status === "ready") {
             setView(pageView.PLAYING);
@@ -20,7 +18,6 @@ function Waiting({ setView, room }: { setView: any, room: number}) {
             setExpectedPlayers(gameStatus.expectedPlayers);
             setTimeout(checkGameStatus, 3000);      // TODO: this is currently a very slow implementation. Use firestore instead
         }
-        i++;
     }
 
     useEffect(() => {
