@@ -10,11 +10,33 @@ class doubleAgentII implements IGameRules {
         this.assignRoles();
     }
 
-    // Status: in progress
+    // Status: ready for testing
     assignRoles() {
+        const teamCount = (this.players.length - 1) / 2
+        const contactA  = this.players[teamCount];
+        const contactB  = this.players[teamCount + teamCount];
 
         // assign roles
-        // TODO: complex gamemode, need to finish this
+        this.assignments[this.players[0]] = "Double Agent. Contacts: " + contactA + ", " + contactB;
+
+        // Team 1 
+        for (let i = 1; i < 1 + teamCount; i++) {
+            let offset = i + 1;
+            if (offset == 1 + teamCount) {
+                offset = 0; // double agent
+            }
+            this.assignments[this.players[i]] = "Team. Team member: " + this.players[offset];
+        }
+
+        // Team 2
+        for (let i = 1 + teamCount; i < 1 + teamCount + teamCount; i++) {
+            let offset = i + 1;
+            if (offset == 1 + teamCount + teamCount) {
+                offset = 0; // double agent
+            }
+            this.assignments[this.players[i]] = "Team. Team member: " + this.players[offset];
+        }
+
     }
 
 }
