@@ -13,8 +13,7 @@ const corsOptions = {
 }
 const app = express();
 app.use(cors(corsOptions)) // Use this after the variable declaration
-// TODO: use websockets to speed up the rate at which the game polls the server
-// const wss = new WebSocket.Server({ noServer: true });
+// TODO: use realtime firestore instead of websockets
 
 // =============================================================================
 
@@ -57,7 +56,7 @@ app.get('/api/create-game/:sheetID/:numPlayers', (req: Request, res: Response) =
     }
 
     // Create a new game room
-    const roomID: number = numRooms;    // TODO: better way to generate a roomID, should be a 6 letter code
+    const roomID: number = numRooms;    
     const newGameRoom = new GameRoom(roomID, sheetID, numPlayersNum);
 
     // Add the game room to the shared dictionary
@@ -98,7 +97,6 @@ app.get('/api/join-game/:roomID', (req: Request, res: Response) => {
 });
 
 // get-game endpoint, returns the game room object. DEVELOPER ONLY ENDPOINT
-// TODO: remove this endpoint before production
 app.get('/api/get-game/:roomID', (req: Request, res: Response) => {
     const { roomID } = req.params;
 

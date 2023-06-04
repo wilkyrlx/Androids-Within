@@ -14,7 +14,7 @@ enum pageView {
     ROOM_CODE,
     GAMEMODE_SELECT,
     JOIN_DETAILS,
-    WAITING,    // TODO: may be unused
+    WAITING,    
     PLAYING,
     TIMER,
     ALL_ROLES,
