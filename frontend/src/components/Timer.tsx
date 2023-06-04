@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { pageView } from '../types/pageView';
 
 function Timer({ setView, timerDuration }: { setView: any, timerDuration: number }) {
-    const [minutes, setMinutes] = useState(0);
+    const [minutes, setMinutes] = useState(1);  // FIXME: change this to timerDuration?
     const [seconds, setSeconds] = useState(0);
     const [timerExpired, setTimerExpired] = useState(false);
 

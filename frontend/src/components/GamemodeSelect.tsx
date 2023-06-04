@@ -48,7 +48,6 @@ function GamemodeSelect({ setView, room, playerCount, setDuration }: { setView: 
             setView(pageView.WAITING);
         } else {
             console.log("no gamemode selected");
-            // TODO: show something to the user
         }
     }
 

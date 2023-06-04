@@ -158,7 +158,7 @@ app.get('/api/set-gamemode/:roomID/:gamemode', (req: Request, res: Response) => 
 });
 
 app.get('/api/reset-status/:roomID', (req: Request, res: Response) => {
-    const { roomID, gamemode } = req.params;
+    const { roomID } = req.params;
 
     // Check if roomID is valid
     const roomIDNum: number = isValidRoom(roomID, res) as number;
