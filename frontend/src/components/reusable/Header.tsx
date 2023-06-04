@@ -2,7 +2,7 @@
 function Header() {
     return (
         <div id="header">
-            <h1>Android Among Us</h1>
+            <h1>An Android in our Midst</h1>
         </div>
     )
 }

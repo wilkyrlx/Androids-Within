@@ -5,13 +5,10 @@ function Timer({ setView, timerDuration }: { setView: any, timerDuration: number
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [timerExpired, setTimerExpired] = useState(false);
-    const [isRunning, setIsRunning] = useState(false);
 
     // Timer takes in some duration in minutes and starts counting down
     const startTimer = (duration: any) => {
         let timer = duration * 60;
-
-        setIsRunning(true);
 
         const intervalId = setInterval(() => {
             const minutes = Math.floor(timer / 60);
@@ -19,11 +16,15 @@ function Timer({ setView, timerDuration }: { setView: any, timerDuration: number
 
             setMinutes(minutes);
             setSeconds(seconds);
+            const timerElement: HTMLElement = document.getElementById('timer-text') as HTMLElement;
+            timerElement.className = "";
+
 
             if (timer <= 0) {
                 clearInterval(intervalId);
                 setTimerExpired(true);
-                setIsRunning(false);
+                timerElement.classList.add('count-over');
+                
             } else {
                 timer--;
             }
@@ -35,8 +36,8 @@ function Timer({ setView, timerDuration }: { setView: any, timerDuration: number
     }, []);
 
     return (
-        <div>
-            <div>
+        <div className='container'>
+            <div id='timer-text'>
                 {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
             </div>
             {timerExpired && <button onClick={() => setView(pageView.ALL_ROLES)}>See All Roles</button>}

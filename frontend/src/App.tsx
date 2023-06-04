@@ -1,5 +1,6 @@
 import './styles/global.css';
-import './styles/functional.css';
+import './styles/gamemode.css';
+import './styles/timer.css';
 import React, { useState } from 'react';
 import { pageView } from './types/pageView';
 import Landing from './components/Landing';
@@ -18,7 +19,7 @@ function App() {
     const [room, setRoom] = useState<number>(0);
     const [playerID, setPlayerID] = useState<number>(-1);	// playerID is the index of the player in the array of players in the backend
 	const [isHost, setHost] = useState<boolean>(false);	    // is the player the host of the game? [true/false]
-    const [view, setView] = useState<pageView>(pageView.LANDING)	// which page is being displayed
+    const [view, setView] = useState<pageView>(pageView.TIMER)	// which page is being displayed
     const [playerCount, setPlayerCount] = useState<number>(0);	// number of players in the game [0-12]
     const [timerDuration, setDuration] = useState<number>(0);	// timer length (minutes)
 

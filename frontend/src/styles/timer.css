@@ -1,0 +1,10 @@
+#timer-text {
+    font-size: xx-large;
+    font-weight: bold;
+    color: rgb(34, 189, 34);
+}
+
+/* functional css - turns red when timer over*/
+.count-over {
+    color: red !important;
+}

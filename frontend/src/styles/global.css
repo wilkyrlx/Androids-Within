@@ -1,12 +1,17 @@
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     margin: 0px;
     padding: 0px;
+    position: relative;
 }
 
 #header {
-
-    background-color: #a32cd2;
+    background-color: #a72020;
     width: 100%;
     padding: 20px;
 }
@@ -24,12 +29,15 @@ body {
 
 }
 
+p {
+    font-size: larger;
+}
 
 button {
     display: block;
     width: 150px;
     height: 50px;
-    background-color: #808080;
+    background-color: #6eb2e0;
     border-radius: 25px;
     text-align: center;
     line-height: 50px;

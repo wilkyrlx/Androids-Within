@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getAllRolesBackend, resetStatusBackend } from "../scripts/backendInteraction";
 import { pageView } from "../types/pageView";
 
-// TODO: untested
 function AllRoles({ setView, room }: { setView: any, room: number }) {
 
     const [roles, setRoles] = useState<string[]>([]);
