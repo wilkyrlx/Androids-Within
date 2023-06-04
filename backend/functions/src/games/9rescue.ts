@@ -10,13 +10,13 @@ class rescue implements IGameRules {
         this.assignRoles();
     }
 
-    // Status: ready for testing
+    // Status: kit tested. Issue found with for loop, fixed now
     assignRoles() {
 
         // assign roles
         this.assignments[this.players[0]] = "Rescuer android. Either: " + this.players[1] + " or " + this.players[2] + " is the hostage android";
         this.assignments[this.players[1]] = "You or " + this.players[2] + " are the hostage android";
-        for (let i = 4; i < this.players.length; i++) {
+        for (let i = 2; i < this.players.length; i++) {
             this.assignments[this.players[i]] = "You or " + this.players[1] + " are the hostage android";
         }
     }

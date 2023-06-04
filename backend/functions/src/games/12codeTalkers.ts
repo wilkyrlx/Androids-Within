@@ -10,7 +10,7 @@ class codeTalkers implements IGameRules {
         this.assignRoles();
     }
 
-    // Status: ready for testing
+    // Status: kit tested
     assignRoles() {
 
         // generate three random codes, where each code is either 1, 2, or 3

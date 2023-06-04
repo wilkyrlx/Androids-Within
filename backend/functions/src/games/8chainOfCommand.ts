@@ -10,7 +10,7 @@ class chainOfCommand implements IGameRules {
         this.assignRoles();
     }
 
-    // Status: ready for testing
+    // Status: kit tested. Issue found with offset, fixed
     assignRoles() {
 
         // assign roles
@@ -21,7 +21,7 @@ class chainOfCommand implements IGameRules {
         for (let i = 4; i < this.players.length; i++) {
             let offset = i + 1;
             if (offset == this.players.length) {
-                offset = 4;
+                offset = 2;
             }
             this.assignments[this.players[i]] = "Human. Human below: " + this.players[offset];
         }

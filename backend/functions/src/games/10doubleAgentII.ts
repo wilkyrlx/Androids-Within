@@ -10,11 +10,11 @@ class doubleAgentII implements IGameRules {
         this.assignRoles();
     }
 
-    // Status: ready for testing
+    // Status: kit tested. Issue with contactA and contactB, fixed
     assignRoles() {
         const teamCount = (this.players.length - 1) / 2
-        const contactA  = this.players[teamCount];
-        const contactB  = this.players[teamCount + teamCount];
+        const contactA  = this.players[1];
+        const contactB  = this.players[1 + teamCount];
 
         // assign roles
         this.assignments[this.players[0]] = "Double Agent. Contacts: " + contactA + ", " + contactB;

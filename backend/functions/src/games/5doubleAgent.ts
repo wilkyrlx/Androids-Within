@@ -10,7 +10,7 @@ class doubleAgent implements IGameRules {
         this.assignRoles();
     }
 
-    // Status: ready for testing
+    // Status: kit tested. Issue found with offset, fixed
     assignRoles() {
         const teamCount = (this.players.length - 1) / 2
 
@@ -21,7 +21,7 @@ class doubleAgent implements IGameRules {
         for (let i = 1; i < 1 + teamCount; i++) {
             let offset = i + 1;
             if (offset == 1 + teamCount) {
-                offset = 2;
+                offset = 1;
             }
             this.assignments[this.players[i]] = "Team. Team member: " + this.players[offset];
         }
@@ -30,7 +30,7 @@ class doubleAgent implements IGameRules {
         for (let i = 1 + teamCount; i < 1 + teamCount + teamCount; i++) {
             let offset = i + 1;
             if (offset == 1 + teamCount + teamCount) {
-                offset = 2 + teamCount;
+                offset = 1 + teamCount;
             }
             this.assignments[this.players[i]] = "Team. Team member: " + this.players[offset];
         }

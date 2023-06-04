@@ -10,7 +10,7 @@ class hunted implements IGameRules {
         this.assignRoles();
     }
 
-    // Status: ready for testing
+    // Status: kit tested
     assignRoles() {
 
         // assign roles

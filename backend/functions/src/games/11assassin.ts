@@ -10,7 +10,7 @@ class assassin implements IGameRules {
         this.assignRoles();
     }
 
-    // Status: ready for testing
+    // Status: kit tested
     assignRoles() {
 
         const informantCount = this.players.length - 3;
