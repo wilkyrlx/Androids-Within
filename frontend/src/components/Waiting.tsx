@@ -1,5 +1,3 @@
-import { stat } from "fs";
-import { awaitingPlayersBackend } from "../utils/backendInteraction";
 import { pageView } from "../types/pageView";
 import { useEffect, useState } from "react";
 

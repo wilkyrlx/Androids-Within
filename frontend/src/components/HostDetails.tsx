@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { pageView } from "../types/pageView";
-import { createGameBackend, joinGameBackend } from "../utils/backendInteraction";
+import { createNewGameRoom, joinGameRoom } from "../utils/dbInteraction";
 
 
 
@@ -11,8 +11,8 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
 
     // Create the game, then join it
     async function startGame() {
-        const roomID = await createGameBackend("UNUSED", parseInt(playerCountText));     // TODO: remove sheet code
-        const playerID: number = await joinGameBackend(roomID.toString());  
+        const roomID: number = await createNewGameRoom(parseInt(playerCountText));
+        const playerID: number = await joinGameRoom(roomID.toString());  
         setRoom(roomID);
         setPlayerID(playerID);
         setHost(true);

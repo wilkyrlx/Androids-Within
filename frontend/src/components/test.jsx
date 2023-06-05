@@ -1,16 +1,14 @@
 import { useState } from "react";
 import database from "../utils/firebase";
+import createNewGameRoom from "../utils/dbInteraction";
 
 function Test() {
     const [name , setName] = useState();
     const [age , setAge] = useState();
         
     // Push Function
-    const Push = () => {
-      database.ref("user").set({
-        name : name,
-        age : age,
-      }).catch(alert);
+    function Push() {
+        createNewGameRoom(6);
     }
     
     return (
