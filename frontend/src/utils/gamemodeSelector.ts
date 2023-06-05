@@ -1,5 +1,19 @@
-import { shuffleArray } from "../types/IGameRules";
 import { sleeperCells, gemini, alone, extraction, doubleAgent, infiltrator, noWayOut, chainOfCommand, rescue, doubleAgentII, assassin, codeTalkers, killSwitch, selfAware, broken, hunted, targetX, renegade, oneAmongUs } from "../games/gameExports";
+
+// TODO: is this shuffle function actually random? try to prove it
+function shuffleArray(array: string[]): string[] {
+    let currentIndex = array.length, randomIndex;
+
+    while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+}
 
 function generateRolesX(numPlayers: number, gameMode: number): { [key: string]: string } {
 

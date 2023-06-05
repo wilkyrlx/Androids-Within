@@ -43,8 +43,9 @@ async function checkGameRoomReady(roomID: number): Promise<any> {
 
     if (roomID in gameRooms) {
         const room: GameRoom = gameRooms[roomID];
-        const isFull: boolean = room.joinedPlayers === room.numPlayers;
-        const retStatus = { status: isFull, joinedPlayers: room.joinedPlayers, numPlayers: room.numPlayers };
+        const status: number = room.status;
+        const isReady: boolean = (room.joinedPlayers === room.numPlayers && status === 1);
+        const retStatus = { status: isReady, joinedPlayers: room.joinedPlayers, numPlayers: room.numPlayers };
         return retStatus;
     } else {
         throw new Error("Game room does not exist");

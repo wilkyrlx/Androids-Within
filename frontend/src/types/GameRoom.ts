@@ -1,7 +1,4 @@
-import { sleeperCells, gemini, alone, extraction, doubleAgent, infiltrator, noWayOut, chainOfCommand, rescue, doubleAgentII, assassin, codeTalkers, killSwitch, selfAware, broken, hunted, targetX, renegade, oneAmongUs } from "../games/gameExports";
-import database from "../utils/firebase";
-import { shuffleArray } from "./IGameRules";
-import { Status } from "./status";
+import { Status } from "./Status";
 
 // FIXME: this class is a dumpsterfire now
 

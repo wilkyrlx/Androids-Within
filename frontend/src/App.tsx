@@ -13,7 +13,6 @@ import AllRoles from './components/AllRoles';
 import Timer from './components/Timer';
 import Header from './components/reusable/Header';
 import RoomCode from './components/RoomCode';
-import Test from './components/test';
 
 function App() {
     

@@ -1,5 +1,5 @@
 import IGamemode from "../types/IGamemode";
-import allGamemodes from "../data/allGamemodes.json";
+import allGamemodes from "../games/allGamemodes.json";
 
 // get all possible gamemodes from the backend
 function getAllGamemodes(): IGamemode[] {
