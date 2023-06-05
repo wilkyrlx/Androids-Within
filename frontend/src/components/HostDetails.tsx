@@ -12,7 +12,7 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
     // Create the game, then join it
     async function startGame() {
         const roomID: number = await createNewGameRoom(parseInt(playerCountText));
-        const playerID: number = await joinGameRoom(roomID.toString());  
+        const playerID: number = await joinGameRoom(roomID);  
         setRoom(roomID);
         setPlayerID(playerID);
         setHost(true);

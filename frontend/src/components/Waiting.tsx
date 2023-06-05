@@ -1,5 +1,6 @@
 import { pageView } from "../types/pageView";
 import { useEffect, useState } from "react";
+import { checkGameRoomReady } from "../utils/dbInteraction";
 
 // Waits for all players to join the game before starting the game
 function Waiting({ setView, room }: { setView: any, room: number}) {
@@ -8,12 +9,12 @@ function Waiting({ setView, room }: { setView: any, room: number}) {
     const [expectedPlayers, setExpectedPlayers] = useState<string>('0');
 
     async function checkGameStatus() {
-        const gameStatus: any = await awaitingPlayersBackend(room.toString());
-        if (gameStatus.status === "ready") {
+        const gameStatus: any = await checkGameRoomReady(room);
+        if (gameStatus.status) {
             setView(pageView.PLAYING);
         } else {
-            setActualPlayers(gameStatus.actualPlayers);
-            setExpectedPlayers(gameStatus.expectedPlayers);
+            setActualPlayers(gameStatus.joinedPlayers);
+            setExpectedPlayers(gameStatus.numPlayers);
             setTimeout(checkGameStatus, 3000);      // TODO: this is currently a very slow implementation. Use firestore instead
         }
     }

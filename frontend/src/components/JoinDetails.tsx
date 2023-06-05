@@ -7,7 +7,7 @@ function JoinDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom:
     const [roomCode, setRoomCode] = useState<string>('');
 
     async function joinGame() {
-        const playerID: number = await joinGameRoom(roomCode);
+        const playerID: number = await joinGameRoom(parseInt(roomCode));
         setRoom(roomCode);
         setPlayerID(playerID);
         setView(pageView.WAITING);

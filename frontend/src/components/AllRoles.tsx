@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { pageView } from "../types/pageView";
+import { getAllRoles, resetStatus } from "../utils/dbInteraction";
 
 function AllRoles({ setView, room }: { setView: any, room: number }) {
 
@@ -7,8 +8,7 @@ function AllRoles({ setView, room }: { setView: any, room: number }) {
 
     useEffect(() => {
         async function fetchRoles() {
-            const allRolesRaw = await getAllRolesBackend(room.toString());
-            const assignments = allRolesRaw.assignments;
+            const assignments = await getAllRoles(room);
             const rolesSet = new Set<string>(); // set deduplicates
             Object.keys(assignments).forEach(key => {
                 console.log(key, assignments[key]);
@@ -18,7 +18,7 @@ function AllRoles({ setView, room }: { setView: any, room: number }) {
             setRoles(sortedRolesArray);
         }
 
-        resetStatusBackend(room.toString());
+        resetStatus(room);
         fetchRoles();
     }, []);
 

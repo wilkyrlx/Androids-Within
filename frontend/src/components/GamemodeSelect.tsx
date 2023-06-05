@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import IGamemode from "../types/IGamemode";
 import { getAllGamemodes, getAvailableGamemodes } from "../utils/gamemodesList";
 import { pageView } from "../types/pageView";
+import { generateRoles } from "../utils/dbInteraction";
 
 
 
@@ -42,7 +43,7 @@ function GamemodeSelect({ setView, room, playerCount, setDuration }: { setView: 
         console.log("starting game");
         if (selectedGamemode) {
             console.log("starting game with gamemode " + selectedGamemode.name);
-            setGamemodeBackend(room.toString(), selectedGamemode.code);
+            generateRoles(room, selectedGamemode.code);
             setDuration(selectedGamemode.timer);
             setView(pageView.WAITING);
         } else {

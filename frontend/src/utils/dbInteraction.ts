@@ -1,5 +1,6 @@
 import GameRoom from "../types/GameRoom";
 import database from "../utils/firebase";
+import generateRolesX from "./gamemodeSelector";
 
 
 // Create a new game room entry
@@ -17,7 +18,7 @@ async function createNewGameRoom(numPlayers: number): Promise<number> {
     return count;
 }
 
-async function joinGameRoom(roomID: string): Promise<number> {
+async function joinGameRoom(roomID: number): Promise<number> {
     const gameRoomsRef = database.ref('gameRooms');
     const snapshot = await gameRoomsRef.once('value');
     const gameRooms = snapshot.val();
@@ -34,4 +35,78 @@ async function joinGameRoom(roomID: string): Promise<number> {
 
 }
 
-export { createNewGameRoom, joinGameRoom };
+// TODO: give this a type
+async function checkGameRoomReady(roomID: number): Promise<any> {
+    const gameRoomsRef = database.ref('gameRooms');
+    const snapshot = await gameRoomsRef.once('value');
+    const gameRooms = snapshot.val();
+
+    if (roomID in gameRooms) {
+        const room: GameRoom = gameRooms[roomID];
+        const isFull: boolean = room.joinedPlayers === room.numPlayers;
+        const retStatus = { status: isFull, joinedPlayers: room.joinedPlayers, numPlayers: room.numPlayers };
+        return retStatus;
+    } else {
+        throw new Error("Game room does not exist");
+    }
+}
+
+async function getRole(roomID: number, playerID: number): Promise<any> {
+    const gameRoomsRef = database.ref('gameRooms');
+    const snapshot = await gameRoomsRef.once('value');
+    const gameRooms = snapshot.val();
+
+    if (roomID in gameRooms) {
+        const room: GameRoom = gameRooms[roomID];
+        const letter: string = String.fromCharCode(65 + playerID)
+        const role: string = JSON.parse(room.assignments)[letter];
+        return {name: letter, role: role};
+    } else {
+        throw new Error("Game room does not exist");
+    }
+}
+
+async function generateRoles(roomID: number, gamemode: number) {
+    const gameRoomsRef = database.ref('gameRooms');
+    const snapshot = await gameRoomsRef.once('value');
+    const gameRooms = snapshot.val();
+
+    if (roomID in gameRooms) {
+        const room: GameRoom = gameRooms[roomID];
+        room.gameMode = gamemode;
+        room.assignments = JSON.stringify(generateRolesX(room.numPlayers, gamemode));
+        room.status = 1;
+        await gameRoomsRef.child(roomID.toString()).set(room);
+    } else {
+        throw new Error("Game room does not exist");
+    }
+}
+
+async function getAllRoles(roomID: number): Promise<any> {
+    const gameRoomsRef = database.ref('gameRooms');
+    const snapshot = await gameRoomsRef.once('value');
+    const gameRooms = snapshot.val();
+
+    if (roomID in gameRooms) {
+        const room: GameRoom = gameRooms[roomID];
+        return JSON.parse(room.assignments);
+    } else {
+        throw new Error("Game room does not exist");
+    }
+}
+
+async function resetStatus(roomID: number) {
+    const gameRoomsRef = database.ref('gameRooms');
+    const snapshot = await gameRoomsRef.once('value');
+    const gameRooms = snapshot.val();
+
+    if (roomID in gameRooms) {
+        const room: GameRoom = gameRooms[roomID];
+        room.status = 0;
+        await gameRoomsRef.child(roomID.toString()).set(room);
+    } else {
+        throw new Error("Game room does not exist");
+    }
+}
+
+export { createNewGameRoom, joinGameRoom, checkGameRoomReady, getRole, generateRoles, getAllRoles, resetStatus };
