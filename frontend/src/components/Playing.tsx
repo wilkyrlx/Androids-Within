@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getRoleBackend } from "../scripts/backendInteraction";
 import { pageView } from "../types/pageView";
+import { getRole } from "../utils/dbInteraction";
 
 // TODO: add the gamemode
 function Playing({ setView, room, playerID, isHost, timerDuration }: { setView: any, room: number, playerID: number, isHost: boolean, timerDuration: number }) {
@@ -10,9 +10,9 @@ function Playing({ setView, room, playerID, isHost, timerDuration }: { setView: 
 
     useEffect(() => {
         async function fetchRole() {
-            const playerRaw = await getRoleBackend(room.toString(), playerID);
-            setRole(playerRaw.role);
+            const playerRaw = await getRole(room, playerID);
             setName(playerRaw.name);
+            setRole(playerRaw.role);
         }
 
         fetchRole();
