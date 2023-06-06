@@ -36,23 +36,6 @@ async function joinGameRoom(roomID: number): Promise<number> {
 }
 
 // TODO: give this a type
-async function checkGameRoomReady(roomID: number): Promise<any> {
-    const gameRoomsRef = database.ref('gameRooms');
-    const snapshot = await gameRoomsRef.once('value');
-    const gameRooms = snapshot.val();
-
-    if (roomID in gameRooms) {
-        const room: GameRoom = gameRooms[roomID];
-        const status: number = room.status;
-        const isReady: boolean = (room.joinedPlayers === room.numPlayers && status === 1);
-        const retStatus = { status: isReady, joinedPlayers: room.joinedPlayers, numPlayers: room.numPlayers };
-        return retStatus;
-    } else {
-        throw new Error("Game room does not exist");
-    }
-}
-
-// TODO: give this a type
 async function getRole(roomID: number, playerID: number): Promise<any> {
     const gameRoomsRef = database.ref('gameRooms');
     const snapshot = await gameRoomsRef.once('value');
@@ -111,17 +94,46 @@ async function resetStatus(roomID: number) {
     }
 }
 
-// TODO: untested
-function waitForStatusChange(room: number) {
+// TODO: give this a type
+async function checkGameRoomReady(roomID: number): Promise<any> {
+    const gameRoomsRef = database.ref('gameRooms');
+    const snapshot = await gameRoomsRef.once('value');
+    const gameRooms = snapshot.val();
+
+    if (roomID in gameRooms) {
+        const room: GameRoom = gameRooms[roomID];
+        const isReady: boolean = (room.joinedPlayers === room.numPlayers && room.status === 1);
+        const retStatus = { status: isReady, joinedPlayers: room.joinedPlayers, numPlayers: room.numPlayers };
+        return retStatus;
+    } else {
+        throw new Error("Game room does not exist");
+    }
+}
+
+// currently unused, since it does not allow us to see totalPlayers and numPlayers
+function waitForGameroomReady(roomID: number) {
     return new Promise(resolve => {
-      const statusRef = database.ref(`gameRooms/${room}/status`);
-      const listener = statusRef.on('value', snapshot => {
-        const newStatus = snapshot.val();
-        if (newStatus === 0) {
-          statusRef.off('value', listener); // Remove the listener
-          resolve(newStatus);
-        }
-      });
+        const statusRef = database.ref(`gameRooms/${roomID}`);
+        const listener = statusRef.on('value', snapshot => {
+            const room = snapshot.val();
+            if (room.joinedPlayers === room.numPlayers && room.status === 1) {
+                statusRef.off('value', listener); // Remove the listener
+                resolve(room);
+            }
+        });
     });
-  }
-export { createNewGameRoom, joinGameRoom, checkGameRoomReady, getRole, generateRoles, getAllRoles, resetStatus, waitForStatusChange };
+}
+
+function waitForStatusChange(roomID: number) {
+    return new Promise(resolve => {
+        const statusRef = database.ref(`gameRooms/${roomID}/status`);
+        const listener = statusRef.on('value', snapshot => {
+            const newStatus = snapshot.val();
+            if (newStatus === 0) {
+                statusRef.off('value', listener); // Remove the listener
+                resolve(newStatus);
+            }
+        });
+    });
+}
+export { createNewGameRoom, joinGameRoom, checkGameRoomReady, getRole, generateRoles, getAllRoles, resetStatus, waitForGameroomReady, waitForStatusChange };
