@@ -18,10 +18,10 @@ class sleeperCells implements IGameRules {
         const bRecruitsCount = recruitsCount / 2;
 
         // assign roles
-        this.assignments[this.players[0]] = "Leader. Your recruits: " + this.players.slice(2, 2 + aRecruitsCount).toString();
-        this.assignments[this.players[1]] = "Leader, Your recruits: " + this.players.slice(2 + aRecruitsCount, 2 + aRecruitsCount + bRecruitsCount).toString();
+        this.assignments[this.players[0]] = "You are a Leader. Signal your Recruits: " + this.players.slice(2, 2 + aRecruitsCount).toString();
+        this.assignments[this.players[1]] = "You are a Leader. Signal your Recruits: " + this.players.slice(2 + aRecruitsCount, 2 + aRecruitsCount + bRecruitsCount).toString();
         for (let i = 2; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = "Recruit";
+            this.assignments[this.players[i]] = "You are a Recruit. Find your Leader.";
         }
     }
 
