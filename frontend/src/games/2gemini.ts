@@ -14,14 +14,14 @@ class gemini implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = "Human";
-        this.assignments[this.players[1]] = "Human";
+        this.assignments[this.players[0]] = "You are human and being hunted by androids. Find your human partner.";
+        this.assignments[this.players[1]] = "You are human and being hunted by androids. Find your human partner.";
         for (let i = 2; i < this.players.length; i++) {
             let offset = i + 1;
             if (offset == this.players.length) {
                 offset = 2;
             }
-            this.assignments[this.players[i]] = "Android. Partner: " + this.players[offset];
+            this.assignments[this.players[i]] = "You are an android. Find one of the two humans. This player is also an android: " + this.players[offset];
         }
     }
 
