@@ -2,7 +2,7 @@
 function Header() {
     return (
         <div id="header">
-            <h1>An Android in our Midst</h1>
+            <h1>Androids Within</h1>
         </div>
     )
 }
