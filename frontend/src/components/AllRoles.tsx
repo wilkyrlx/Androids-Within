@@ -18,9 +18,13 @@ function AllRoles({ setView, room }: { setView: any, room: number }) {
             setRoles(sortedRolesArray);
         }
 
-        resetStatus(room);
         fetchRoles();
     }, []);
+
+    function newGame() {
+        resetStatus(room);
+        setView(pageView.GAMEMODE_SELECT);
+    }
 
     return (
         <div>
@@ -30,7 +34,7 @@ function AllRoles({ setView, room }: { setView: any, room: number }) {
                     <li key={index}>Player: {role}</li>
                 ))}
             </ul>
-            <button onClick={() => setView(pageView.GAMEMODE_SELECT)}>Restart Game</button> 
+            <button onClick={() => newGame()}>Restart Game</button> 
         </div>
     )
 }

@@ -52,6 +52,7 @@ async function checkGameRoomReady(roomID: number): Promise<any> {
     }
 }
 
+// TODO: give this a type
 async function getRole(roomID: number, playerID: number): Promise<any> {
     const gameRoomsRef = database.ref('gameRooms');
     const snapshot = await gameRoomsRef.once('value');
@@ -61,7 +62,7 @@ async function getRole(roomID: number, playerID: number): Promise<any> {
         const room: GameRoom = gameRooms[roomID];
         const letter: string = String.fromCharCode(65 + playerID)
         const role: string = JSON.parse(room.assignments)[letter];
-        return {name: letter, role: role};
+        return { name: letter, role: role };
     } else {
         throw new Error("Game room does not exist");
     }
@@ -110,4 +111,17 @@ async function resetStatus(roomID: number) {
     }
 }
 
-export { createNewGameRoom, joinGameRoom, checkGameRoomReady, getRole, generateRoles, getAllRoles, resetStatus };
+// TODO: untested
+function waitForStatusChange(room: number) {
+    return new Promise(resolve => {
+      const statusRef = database.ref(`gameRooms/${room}/status`);
+      const listener = statusRef.on('value', snapshot => {
+        const newStatus = snapshot.val();
+        if (newStatus === 0) {
+          statusRef.off('value', listener); // Remove the listener
+          resolve(newStatus);
+        }
+      });
+    });
+  }
+export { createNewGameRoom, joinGameRoom, checkGameRoomReady, getRole, generateRoles, getAllRoles, resetStatus, waitForStatusChange };

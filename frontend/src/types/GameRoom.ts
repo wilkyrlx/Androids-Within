@@ -1,4 +1,4 @@
-import { Status } from "./Status";
+import { Status } from "./status";
 
 // FIXME: this class is a dumpsterfire now
 
