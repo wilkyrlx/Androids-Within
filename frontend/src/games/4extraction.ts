@@ -14,11 +14,11 @@ class extraction implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = "Hostage"; 
-        this.assignments[this.players[1]] = "Rescue Team. Target: " + this.players[0];
-        this.assignments[this.players[2]] = "Rescue Team. Target: " + this.players[0];
+        this.assignments[this.players[0]] = "You are a human hostage of the androids. Look for your two human rescuers."; 
+        this.assignments[this.players[1]] = "You are one of two human rescuers trying to save human hostage: " + this.players[0];
+        this.assignments[this.players[2]] = "You are one of two human rescuers trying to save human hostage: " + this.players[0];
         for (let i = 3; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = "Android";
+            this.assignments[this.players[i]] = "You are a hunter android trying to discover the human hostage or rescuers.";
         }
     }
 

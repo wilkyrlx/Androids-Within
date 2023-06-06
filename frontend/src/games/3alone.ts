@@ -14,9 +14,9 @@ class alone implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = "Target: " + this.players[1]; 
+        this.assignments[this.players[0]] = "Either you or Player " + this.players[1] + " is the only Android"; 
         for (let i = 1; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = "Target: " + this.players[0];
+            this.assignments[this.players[i]] = "Either you or Player " + this.players[0] + " is the only Android";
         }
     }
 
