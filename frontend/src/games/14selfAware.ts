@@ -14,9 +14,9 @@ class selfAware implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = 'Self-aware android. Human is: ' + this.players[1];
+        this.assignments[this.players[0]] = 'You are the Self-Aware Android. Indicate to your fellow Androids that the Human is ' + this.players[1];
         for (let i = 1; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = 'Android or Human';
+            this.assignments[this.players[i]] = 'You are an Android or a Human. The Self-Aware Android may instruct you to kill the Human. Unless you are the Human . . .';
         }        
     }
 

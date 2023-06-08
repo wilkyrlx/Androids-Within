@@ -14,9 +14,9 @@ class killSwitch implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = 'Human'
+        this.assignments[this.players[0]] = 'You are the only Human. Blink both eyes at Androids to kill them before they identify you.'
         for (let i = 1; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = 'Android';
+            this.assignments[this.players[i]] = 'You are an Android. You must slowly look at all players. Identify the Human before he shuts you down.';
         }        
     }
 

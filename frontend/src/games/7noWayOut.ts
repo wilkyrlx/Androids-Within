@@ -14,12 +14,12 @@ class noWayOut implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = "Human";
-        this.assignments[this.players[1]] = "Lead android. Android below: " + this.players[2];
+        this.assignments[this.players[0]] = "You are human and being hunted by androids. Identify the Lead android.";
+        this.assignments[this.players[1]] = "You are the Lead android. Only you can identify the human. The following player is an android directly below you: " + this.players[2];
         for (let i = 2; i < this.players.length - 1; i++) {
-            this.assignments[this.players[i]] = "Android. Android below: " + this.players[i+1];
+            this.assignments[this.players[i]] = "You are an android. The following player is an android directly below you: " + this.players[i+1];
         }
-        this.assignments[this.players[this.players.length - 1]] = "Last android";
+        this.assignments[this.players[this.players.length - 1]] = "You are the Last android.";
     }
 
 }
