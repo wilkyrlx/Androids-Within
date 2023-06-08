@@ -103,11 +103,6 @@ function generateRolesX(numPlayers: number, gameMode: number): { [key: string]: 
             // One Among Us
             assignments = new oneAmongUs(shuffledArray).assignments;
             break;
-
-        case 20:
-            // Custom
-            assignments = {A: "test"};
-            break;
         default:
             console.log("Invalid game mode");
             break;

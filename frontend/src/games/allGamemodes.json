@@ -1,16 +1,5 @@
 [
     {
-        "code": 20,
-        "name": "TESTING ONLY",
-        "description": "TESTING ONLY",
-        "allowedPlayers": [
-            1,
-            2,
-            3
-        ],
-        "timer": 0
-    },
-    {
         "code": 1,
         "name": "Sleeper Cells",
         "description": "Sleeper Cells",
