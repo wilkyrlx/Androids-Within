@@ -20,7 +20,7 @@ class broken implements IGameRules {
             if (offset == this.players.length) {
                 offset = 1;
             }
-            this.assignments[this.players[i]] = "Your target is: " + this.players[offset];
+            this.assignments[this.players[i]] = "Your target is " + this.players[offset];
         }      
     }
 
