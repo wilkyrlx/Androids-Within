@@ -14,10 +14,10 @@ class hunted implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = 'Self-aware android. Human: ' + this.players[1];
-        this.assignments[this.players[1]] = 'Human';
+        this.assignments[this.players[0]] = 'You are the Self-Aware Android. Indicate to your fellow Androids that the Human is ' + this.players[1];
+        this.assignments[this.players[1]] = 'You are the only Human. Kill the Self-Aware Android before the other Androids kill you';
         for (let i = 2; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = "Android";
+            this.assignments[this.players[i]] = "You are an Android awaiting orders from the Self-Aware Android";
         }      
     }
 
