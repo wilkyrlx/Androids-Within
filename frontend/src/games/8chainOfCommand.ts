@@ -14,16 +14,16 @@ class chainOfCommand implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = "Alpha android. Decoy android: " + this.players[1];
-        this.assignments[this.players[1]] = "Decoy android. Alpha android: " + this.players[0];
-        this.assignments[this.players[2]] = "Embedded human. Alpha android: " + this.players[0];
-        this.assignments[this.players[3]] = "Lead human. Human below: " + this.players[4];
+        this.assignments[this.players[0]] = "You are the Alpha Android. Find the Embedded Human. Do not get identified by the Lead Human. The Decoy Android is: " + this.players[1];
+        this.assignments[this.players[1]] = "You are the Decoy Android. Find the Embedded Human. Protect the Alpha Android. The Alpha Android is: " + this.players[0];
+        this.assignments[this.players[2]] = "You are a human embedded in an android stronghold. Communicate the identity of the Alpha Android to the Lead Human. The Alpha Android is: " + this.players[0];
+        this.assignments[this.players[3]] = "You are the Lead Human. Only you can identify the Alpha Android. The following player is a Human directly below you: " + this.players[4];
         for (let i = 4; i < this.players.length; i++) {
             let offset = i + 1;
             if (offset == this.players.length) {
                 offset = 2;
             }
-            this.assignments[this.players[i]] = "Human. Human below: " + this.players[offset];
+            this.assignments[this.players[i]] = "You are a human. The following player is a human directly below you: " + this.players[offset];
         }
     }
 

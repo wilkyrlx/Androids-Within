@@ -24,14 +24,14 @@ class assassin implements IGameRules {
         }
 
         // assign roles
-        this.assignments[this.players[0]] = "Assassin";
-        this.assignments[this.players[1]] = "Potential target";
-        this.assignments[this.players[2]] = "Potential target";
+        this.assignments[this.players[0]] = "You are the Assassin Human. Discover your Target Android from the Informants.";
+        this.assignments[this.players[1]] = "You might be a Hunted Android. If you think so, shout Escape! If not, just stay calm and don’t panic";
+        this.assignments[this.players[2]] = "You might be a Hunted Android. If you think so, shout Escape! If not, just stay calm and don’t panic";
         for (let i = 3; i < 3 + minorityCount; i++) {
-            this.assignments[this.players[i]] = "Informant. Target: " + this.players[1];
+            this.assignments[this.players[i]] = "You are an Informant. Secretly tell the Assassin " + this.players[1];
         }
         for (let i = 3 + minorityCount; i < 3 + minorityCount + majorityCount; i++) {
-            this.assignments[this.players[i]] = "Informant. Target: " + this.players[2];
+            this.assignments[this.players[i]] = "You are an Informant. Secretly tell the Assassin " + this.players[2];
         }   
     }
 

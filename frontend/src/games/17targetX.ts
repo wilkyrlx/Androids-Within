@@ -14,10 +14,10 @@ class targetX implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = 'Android';
-        this.assignments[this.players[1]] = `Human. Player ${this.players[0]} is either an android or the informant.`;
+        this.assignments[this.players[0]] = 'You are an Android. Find the Informant Human';
+        this.assignments[this.players[1]] = `You are Human. Player ${this.players[0]} is either your Informant or an Android.`;
         for (let i = 2; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = `Human. Player ${this.players[1]} is either an android or the informant.`;
+            this.assignments[this.players[i]] = `You are Human. Player ${this.players[1]} is either your Informant or an Android.`;
         }      
     }
 

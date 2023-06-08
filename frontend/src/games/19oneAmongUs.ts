@@ -14,10 +14,10 @@ class oneAmongUs implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = 'Target: ' + this.players[3];   // android
-        this.assignments[this.players[1]] = 'Target: ' + this.players[2];   // human leader
+        this.assignments[this.players[0]] = 'Your contact is ' + this.players[3];   // android
+        this.assignments[this.players[1]] = 'Your contact is ' + this.players[2];   // human leader
         for (let i = 2; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = "Target: " + this.players[1];   // human
+            this.assignments[this.players[i]] = "Your contact is " + this.players[1];   // human
         }      
     }
 

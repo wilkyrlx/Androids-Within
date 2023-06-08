@@ -14,10 +14,10 @@ class renegade implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = 'Watcher android';
-        this.assignments[this.players[1]] = 'Renegade human. Recruit is: ' + this.players[2];
+        this.assignments[this.players[0]] = 'You are the Watcher Android. Announce yourself. Force your subjects to obey and expose the Renegade or Recruit by name.';
+        this.assignments[this.players[1]] = 'You are the Renegade. Obey the Watcher. Player ' + this.players[2];
         for (let i = 2; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = "Human";
+            this.assignments[this.players[i]] = "You are Human. Obey the Watcher. You may be the Recruit";
         }      
     }
 

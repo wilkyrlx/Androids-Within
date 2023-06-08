@@ -19,12 +19,12 @@ class codeTalkers implements IGameRules {
         const codeC = Math.floor(Math.random() * 3) + 1;
 
         // assign roles
-        this.assignments[this.players[0]] = `Receiver android. Transmitter androids are: ${this.players[1]}, ${this.players[2]}, ${this.players[3]}`;
-        this.assignments[this.players[1]] = `Transmitter android. Receiver android: ${this.players[0]}. Code: ${codeA}`;
-        this.assignments[this.players[2]] = `Transmitter android. Receiver android: ${this.players[0]}. Code: ${codeB}`;
-        this.assignments[this.players[3]] = `Transmitter android. Receiver android: ${this.players[0]}. Code: ${codeC}`;
+        this.assignments[this.players[0]] = `You are the Receiver Android. Add up all Codes. Your Transmitters are ${this.players[1]}, ${this.players[2]}, ${this.players[3]}`;
+        this.assignments[this.players[1]] = `You are a Transmitter Android. The Receiver is ${this.players[0]}. Your code is ${codeA}`;
+        this.assignments[this.players[2]] = `You are a Transmitter Android. The Receiver is ${this.players[0]}. Your code is ${codeB}`;
+        this.assignments[this.players[3]] = `You are a Transmitter Android. The Receiver is ${this.players[0]}. Your code is ${codeC}`;
         for (let i = 4; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = `Human`;
+            this.assignments[this.players[i]] = `You are a Human. Identify the Receiver or identify a Transmitter's code.`;
         }        
     }
 

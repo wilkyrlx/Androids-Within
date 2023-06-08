@@ -17,7 +17,7 @@ class doubleAgentII implements IGameRules {
         const contactB  = this.players[1 + teamCount];
 
         // assign roles
-        this.assignments[this.players[0]] = "Double Agent. Contacts: " + contactA + ", " + contactB;
+        this.assignments[this.players[0]] = "You are a Double Agent. Stay undetected. One team includes " + contactA + ", " + contactB;
 
         // Team 1 
         for (let i = 1; i < 1 + teamCount; i++) {
@@ -25,7 +25,7 @@ class doubleAgentII implements IGameRules {
             if (offset == 1 + teamCount) {
                 offset = 0; // double agent
             }
-            this.assignments[this.players[i]] = "Team. Team member: " + this.players[offset];
+            this.assignments[this.players[i]] = "You are a member of a team. Reveal the Double Agent. The following player is also on your team: " + this.players[offset];
         }
 
         // Team 2
@@ -34,7 +34,7 @@ class doubleAgentII implements IGameRules {
             if (offset == 1 + teamCount + teamCount) {
                 offset = 0; // double agent
             }
-            this.assignments[this.players[i]] = "Team. Team member: " + this.players[offset];
+            this.assignments[this.players[i]] = "You are a member of a team. Reveal the Double Agent. The following player is also on your team: " + this.players[offset];
         }
 
     }

@@ -14,10 +14,10 @@ class rescue implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = "Rescuer android. Either: " + this.players[1] + " or " + this.players[2] + " is the hostage android";
-        this.assignments[this.players[1]] = "You or " + this.players[2] + " are the hostage android";
+        this.assignments[this.players[0]] = "You are the Rescuer Android. You need to figure out who is the Hostage Android and secretly contact them. Either: " + this.players[1] + " or " + this.players[2] + " is the hostage android";
+        this.assignments[this.players[1]] = "Either you or Player " + this.players[2] + " is the hostage android";
         for (let i = 2; i < this.players.length; i++) {
-            this.assignments[this.players[i]] = "You or " + this.players[1] + " are the hostage android";
+            this.assignments[this.players[i]] = "Either you or Player " + this.players[1] + " is the hostage android";
         }
     }
 
