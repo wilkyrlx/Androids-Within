@@ -14,13 +14,13 @@ class broken implements IGameRules {
     assignRoles() {
 
         // assign roles
-        this.assignments[this.players[0]] = 'Android. Target: ' + this.players[1];  // broken android
+        this.assignments[this.players[0]] = 'Your target is ' + this.players[1];  // broken android
         for (let i = 1; i < this.players.length; i++) {
             let offset = i + 1;
             if (offset == this.players.length) {
                 offset = 1;
             }
-            this.assignments[this.players[i]] = "Android. Target: " + this.players[offset];
+            this.assignments[this.players[i]] = "Your target is: " + this.players[offset];
         }      
     }
 
