@@ -14,3 +14,7 @@ Once all players have joined, players will receive their roles and the game will
 At any point, refreshing the page will lose your spot in the gameroom. In this prototype version, this will make the gameroom unplayable, so if any player refreshes the page, the game leader should start a new game.
 
 Please report any bugs to [John Wilkinson (developer)](mailto:john_wilkinson@brown.edu) or [Dave Wilkinson (game designer)](mailto:wilkdave@gmail.com).
+
+## Deploy Notes
+Last deployed: 2023-06-09
+Last database cleanse: 2023-06-01
