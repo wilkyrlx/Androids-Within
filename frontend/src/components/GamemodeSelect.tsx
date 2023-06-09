@@ -76,16 +76,19 @@ function GamemodeSelect({ setView, room, playerCount, setDuration }: { setView: 
             <p> select your gamemode </p>
             <ul>
                 {gamemodes.map((gamemode: IGamemode) => (
-                    <li 
-                    key={gamemode.code} 
-                    id={gamemode.code.toString()}
-                    className={availableGamemodeClass(gamemode)} 
-                    onClick={() => updateGamemode(gamemode)}>
-                        {gamemode.name}
+                    <li
+                        key={gamemode.code}
+                        id={gamemode.code.toString()}
+                        className={availableGamemodeClass(gamemode)}
+                        onClick={() => updateGamemode(gamemode)}>
+                        <p>
+                            <span>{gamemode.name}</span>
+                            <span className={`difficulty-${gamemode.difficulty}`}> &#8226;</span>
+                        </p>
                     </li>
                 ))}
             </ul>
-            
+
             <button id="start-game-btn" className="btn-disabled" onClick={() => startGame()}>Start Game</button>
         </div>
     )

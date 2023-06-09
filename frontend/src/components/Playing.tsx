@@ -32,9 +32,9 @@ function Playing({ setView, room, playerID, isHost, timerDuration }: { setView: 
     
     return (
         <div id="playing" className="container">
-            <p> Playing the game </p>
-            <p> Name: {name} </p>
-            <p> Role: {role} </p>
+            <p> Game in progress... </p>
+            <p> Player {name} </p>
+            <p> {role} </p>
             { useTimer && isHost && <button onClick={() => setView(pageView.TIMER)}>Start Timer</button> }
             { !useTimer && isHost && <button onClick={() => setView(pageView.ALL_ROLES)}>See All Roles</button> }
         </div>

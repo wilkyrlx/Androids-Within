@@ -6,6 +6,7 @@ interface IGamemode {
     description: string;
     allowedPlayers: number[];
     timer: number;
+    difficulty: number;
 }
 
 export default IGamemode;
