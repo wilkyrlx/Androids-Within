@@ -64,3 +64,12 @@ input {
     justify-content: center;
     height: 100vh;
 }
+
+.containerII {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.containerII > p {
+    font-size: x-large;
+}

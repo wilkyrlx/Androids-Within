@@ -8,7 +8,7 @@ function Timer({ setView, timerDuration }: { setView: any, timerDuration: number
 
     // Timer takes in some duration in minutes and starts counting down
     const startTimer = (duration: any) => {
-        let timer = duration * 60;
+        let timer = duration * 45;  // FIXME: hack fix to make timer always 45 seconds
 
         const intervalId = setInterval(() => {
             const minutes = Math.floor(timer / 60);

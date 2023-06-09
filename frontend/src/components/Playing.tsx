@@ -29,9 +29,9 @@ function Playing({ setView, room, playerID, isHost, timerDuration }: { setView: 
     }, []);
 
     const useTimer: boolean = timerDuration > 0;
-    
+    // TODO: add margin, larger text
     return (
-        <div id="playing" className="container">
+        <div id="playing" className="container containerII">
             <p> Game in progress... </p>
             <p> Player {name} </p>
             <p> {role} </p>
