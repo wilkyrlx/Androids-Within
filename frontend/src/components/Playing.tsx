@@ -35,8 +35,8 @@ function Playing({ setView, room, playerID, isHost, timerDuration }: { setView: 
             <p> Game in progress... </p>
             <p> Player {name} </p>
             <p> {role} </p>
-            { useTimer && isHost && <button onClick={() => setView(pageView.TIMER)}>Start Timer</button> }
-            { !useTimer && isHost && <button onClick={() => setView(pageView.ALL_ROLES)}>See All Roles</button> }
+            {/* { useTimer && isHost && <button onClick={() => setView(pageView.TIMER)}>Start Timer</button> } */}
+            { isHost && <button onClick={() => setView(pageView.ALL_ROLES)}>See All Roles</button> }
         </div>
     )
 }

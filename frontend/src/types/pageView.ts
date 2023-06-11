@@ -25,9 +25,11 @@ export { pageView }
 /*
     Flow diagram for pageView states:
 
-               HOST_DETAILS -> ROOM_CODE -> GAMEMODE_SELECT                           TIMER (if necessary) -> ALL_ROLES -> (GAMEMODE_SELECT)
+               HOST_DETAILS -> ROOM_CODE -> GAMEMODE_SELECT                            ALL_ROLES -> (GAMEMODE_SELECT)
             /                                               \                        /                                    
     LANDING                                                     -> WAITING -> PLAYING  
             \                                               /                        \
                JOIN_DETAILS ---------------------------->                             WAITING 
+
+    Removed: TIMER (if necessary)
 */
