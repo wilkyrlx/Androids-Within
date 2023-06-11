@@ -12,7 +12,8 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
     // Create the game, then join it
     async function startGame() {
         const roomID: number = await createNewGameRoom(parseInt(playerCountText));
-        const playerID: number = await joinGameRoom(roomID);  
+        const playerID: number = 0; // always player A 
+        joinGameRoom(roomID);  
         setRoom(roomID);
         setPlayerID(playerID);
         setHost(true);
@@ -22,13 +23,7 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
 
     return (
         <div id="host-details" className="container">
-            <input
-                id="player-count"
-                type="text"
-                placeholder="Enter Number of Players"
-                value={playerCountText}
-                onChange={ (ev) => setPlayerCountText(ev.target.value)}
-            />            
+            <input id="player-count" type="text" placeholder="Enter Number of Players" value={playerCountText} onChange={ (ev) => setPlayerCountText(ev.target.value)} />            
             <button onClick={() => startGame()}>Create Game</button>
         </div>
     )

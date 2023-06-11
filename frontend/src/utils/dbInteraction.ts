@@ -18,17 +18,15 @@ async function createNewGameRoom(numPlayers: number): Promise<number> {
     return count;
 }
 
-async function joinGameRoom(roomID: number): Promise<number> {
+async function joinGameRoom(roomID: number) {
     const gameRoomsRef = database.ref('gameRooms');
     const snapshot = await gameRoomsRef.once('value');
     const gameRooms = snapshot.val();
 
     if (roomID in gameRooms) {
         const room: GameRoom = gameRooms[roomID];
-        const playerID = room.joinedPlayers;
         room.joinedPlayers += 1;
         await gameRoomsRef.child(roomID.toString()).set(room);
-        return playerID;
     } else {
         throw new Error("Game room does not exist");
     }
