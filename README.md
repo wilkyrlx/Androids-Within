@@ -16,5 +16,5 @@ At any point, refreshing the page will lose your spot in the gameroom. In this p
 Please report any bugs to [John Wilkinson (developer)](mailto:john_wilkinson@brown.edu) or [Dave Wilkinson (game designer)](mailto:wilkdave@gmail.com).
 
 ## Deploy Notes
-Last deployed: 2023-06-09
+Last deployed: 2023-06-11
 Last database cleanse: 2023-06-01
