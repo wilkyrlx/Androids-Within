@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { pageView } from '../types/pageView';
 
+
+// This component is currently unused and the state is skipped over
+
 function Timer({ setView, timerDuration }: { setView: any, timerDuration: number }) {
     const [minutes, setMinutes] = useState(1);  // FIXME: change this to timerDuration?
     const [seconds, setSeconds] = useState(0);
@@ -8,7 +11,7 @@ function Timer({ setView, timerDuration }: { setView: any, timerDuration: number
 
     // Timer takes in some duration in minutes and starts counting down
     const startTimer = (duration: any) => {
-        let timer = duration * 45;  // FIXME: hack fix to make timer always 45 seconds
+        let timer = duration * 60;  // convert to seconds
 
         const intervalId = setInterval(() => {
             const minutes = Math.floor(timer / 60);

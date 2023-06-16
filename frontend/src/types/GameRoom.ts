@@ -1,6 +1,5 @@
 import { Status } from "./status";
 
-// FIXME: this class is a dumpsterfire now
 
 /**
  * Represents a game room
@@ -28,8 +27,6 @@ class GameRoom {
         this.status = Status.WAITING_ON_HOST;
         this.assignments = "";
     }
-
-
 }
 
 export default GameRoom;
