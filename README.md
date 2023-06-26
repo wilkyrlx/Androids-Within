@@ -13,6 +13,12 @@ Once all players have joined, players will receive their roles and the game will
 ## Troubleshooting
 Please report any bugs to [John Wilkinson (developer)](mailto:john_wilkinson@brown.edu) or [Dave Wilkinson (game designer)](mailto:wilkdave@gmail.com).
 
+## Add a new game
+1. Add a new game mode to `src/games/`
+2. Add that game mode to `src/games/allGamemodes.json`
+3. Add that game mode to `src/games/gameExports.js`
+4. Add a switch case for that game mode to `src\utils\gamemodeSelector.ts`
+
 ## Deploy Notes
 Last deployed: 2023-06-14
 Last database cleanse: 2023-06-01

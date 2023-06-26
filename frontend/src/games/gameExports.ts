@@ -17,7 +17,14 @@ import hunted from "./16hunted";
 import targetX from "./17targetX";
 import renegade from "./18renegade";
 import oneAmongUs from "./19oneAmongUs";
+import spyVsSpy from "./20spyVsSpy";
+import infinityLoop from "./21infinityLoop";
 
 // This file collects all game exports into one place
 
-export { sleeperCells, gemini, alone, extraction, doubleAgent, infiltrator, noWayOut, chainOfCommand, rescue, doubleAgentII, assassin, codeTalkers, killSwitch, selfAware, broken, hunted, targetX, renegade, oneAmongUs };
+export {
+    sleeperCells, gemini, alone, extraction, doubleAgent, infiltrator,
+    noWayOut, chainOfCommand, rescue, doubleAgentII, assassin, codeTalkers,
+    killSwitch, selfAware, broken, hunted, targetX, renegade, oneAmongUs,
+    spyVsSpy, infinityLoop
+};

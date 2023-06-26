@@ -1,4 +1,9 @@
-import { sleeperCells, gemini, alone, extraction, doubleAgent, infiltrator, noWayOut, chainOfCommand, rescue, doubleAgentII, assassin, codeTalkers, killSwitch, selfAware, broken, hunted, targetX, renegade, oneAmongUs } from "../games/gameExports";
+import {
+    sleeperCells, gemini, alone, extraction, doubleAgent, infiltrator,
+    noWayOut, chainOfCommand, rescue, doubleAgentII, assassin, codeTalkers,
+    killSwitch, selfAware, broken, hunted, targetX, renegade, oneAmongUs,
+    spyVsSpy, infinityLoop
+} from "../games/gameExports";
 
 // TODO: is this shuffle function actually random? try to prove it
 function shuffleArray(array: string[]): string[] {
@@ -102,6 +107,14 @@ function generateRolesX(numPlayers: number, gameMode: number): { [key: string]: 
         case 19:
             // One Among Us
             assignments = new oneAmongUs(shuffledArray).assignments;
+            break;
+        case 20:
+            // Spy vs Spy
+            assignments = new spyVsSpy(shuffledArray).assignments;
+            break;
+        case 21:
+            // Infinity Loop
+            assignments = new infinityLoop(shuffledArray).assignments;
             break;
         default:
             console.log("Invalid game mode");

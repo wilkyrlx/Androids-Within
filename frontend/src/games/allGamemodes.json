@@ -6,8 +6,7 @@
         "allowedPlayers": [
             6,
             8,
-            10,
-            12
+            10
         ],
         "timer": 0,
         "difficulty": 1
@@ -21,9 +20,7 @@
             7,
             8,
             9,
-            10,
-            11,
-            12
+            10
         ],
         "timer": 0,
         "difficulty": 1
@@ -50,9 +47,7 @@
             7,
             8,
             9,
-            10,
-            11,
-            12
+            10
         ],
         "timer": 1,
         "difficulty": 2
@@ -64,8 +59,7 @@
         "allowedPlayers": [
             5,
             7,
-            9,
-            11
+            9
         ],
         "timer": 1,
         "difficulty": 1
@@ -80,9 +74,7 @@
             7,
             8,
             9,
-            10,
-            11,
-            12
+            10
         ],
         "timer": 0,
         "difficulty": 2
@@ -97,9 +89,7 @@
             7,
             8,
             9,
-            10,
-            11,
-            12
+            10
         ],
         "timer": 1,
         "difficulty": 3
@@ -113,9 +103,7 @@
             7,
             8,
             9,
-            10,
-            11,
-            12
+            10
         ],
         "timer": 0,
         "difficulty": 3
@@ -140,8 +128,7 @@
         "allowedPlayers": [
             5,
             7,
-            9,
-            11
+            9
         ],
         "timer": 1,
         "difficulty": 3
@@ -155,9 +142,7 @@
             7,
             8,
             9,
-            10,
-            11,
-            12
+            10
         ],
         "timer": 0,
         "difficulty": 3
@@ -269,6 +254,30 @@
             6,
             7,
             8
+        ],
+        "timer": 0,
+        "difficulty": 1
+    },
+    {
+        "code": 20,
+        "name": "Spy vs. Spy",
+        "description": "Spy vs. Spy",
+        "allowedPlayers": [
+            6,
+            8,
+            10
+        ],
+        "timer": 0,
+        "difficulty": 1
+    },
+    {
+        "code": 21,
+        "name": "Infinity Loop",
+        "description": "Infinity Loop",
+        "allowedPlayers": [
+            6,
+            8,
+            10
         ],
         "timer": 0,
         "difficulty": 1
