@@ -25,7 +25,7 @@ function Waiting({ setView, room }: { setView: any, room: number}) {
 
     return (
         <div id="waiting" className="container">
-            <p> Waiting for the game to start... </p>
+            <p> Room {room}: waiting for the game to start... </p>
             <p> {actualPlayers} / {expectedPlayers} players joined </p>
         </div>
     )

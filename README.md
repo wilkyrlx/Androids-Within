@@ -20,5 +20,5 @@ Please report any bugs to [John Wilkinson (developer)](mailto:john_wilkinson@bro
 4. Add a switch case for that game mode to `src\utils\gamemodeSelector.ts`
 
 ## Deploy Notes
-Last deployed: 2023-06-14
+Last deployed: 2023-06-27
 Last database cleanse: 2023-06-01
