@@ -1,5 +1,5 @@
 # Androids Within
-Androids Within is a social deduction game designed by Dave Wilkinson. With 19 gamemodes allowing for games of 5 to 12 players, Androids Within is a game that can be played over and over again. Although the game has an online component, it is designed to be played in person.
+Androids Within is a social deduction game designed by Dave Wilkinson. With 19 gamemodes allowing for games of 5 to 10 players, Androids Within is a game that can be played over and over again. Although the game has an online component, it is designed to be played in person.
 
 ## How to Play
 Every player should have a device with a web browser. 
