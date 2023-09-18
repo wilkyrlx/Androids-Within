@@ -19,7 +19,7 @@ class infinityLoop implements IGameRules {
         this.assignments[this.players[0]] = 'You are an assassin. Your contact is ' + this.players[1];     // android
         for (let i = 1; i < teamSize; i++) {
             if (i + 1 == teamSize) {
-                this.assignments[this.players[i]] = "You are an informant. The enemy assassin is " + this.players[i+1];   // android            
+                this.assignments[this.players[i]] = "Your contact is " + this.players[i+1];   // android informant            
             } else {
                 this.assignments[this.players[i]] = "Your contact is " + this.players[i+1];   // android            
             }
@@ -27,7 +27,7 @@ class infinityLoop implements IGameRules {
         this.assignments[this.players[teamSize]] = 'You are an assassin. Your contact is ' + this.players[teamSize + 1];     // human
         for (let i = teamSize + 1; i < this.players.length; i++) {
             if (i + 1 == this.players.length) {
-                this.assignments[this.players[i]] = "You are an informant. The enemy assassin is " + this.players[0];   // human            
+                this.assignments[this.players[i]] = "Your contact is " + this.players[0];   // human informant            
             } else {
                 this.assignments[this.players[i]] = "Your contact is " + this.players[i+1];   // human            
             }
