@@ -1,9 +1,9 @@
-enum Status {
+enum RoomStatus {
     WAITING_ON_HOST,    // 0
-    WAITING,            // 1
+    READY,            // 1
 }
 
-export { Status }
+export { RoomStatus }
 
 /*
     Gameroom starts with WAITING_ON_HOST

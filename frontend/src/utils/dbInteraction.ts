@@ -1,7 +1,9 @@
 import GameRoom from "../types/GameRoom";
+import { RoomStatus } from "../types/status";
 import database from "../utils/firebase";
 import generateRolesX from "./gamemodeSelector";
 
+// TODO: add these to some class or const
 
 // Create a new game room entry
 async function createNewGameRoom(numPlayers: number): Promise<number> {
@@ -26,6 +28,21 @@ async function joinGameRoom(roomID: number) {
     if (roomID in gameRooms) {
         const room: GameRoom = gameRooms[roomID];
         room.joinedPlayers += 1;
+        await gameRoomsRef.child(roomID.toString()).set(room);
+    } else {
+        throw new Error("Game room does not exist");
+    }
+
+}
+
+async function overrideStartGameRoom(roomID: number) {
+    const gameRoomsRef = database.ref('gameRooms');
+    const snapshot = await gameRoomsRef.once('value');
+    const gameRooms = snapshot.val();
+
+    if (roomID in gameRooms) {
+        const room: GameRoom = gameRooms[roomID];
+        room.status = 1;
         await gameRoomsRef.child(roomID.toString()).set(room);
     } else {
         throw new Error("Game room does not exist");
@@ -58,7 +75,7 @@ async function generateRoles(roomID: number, gamemode: number) {
         const room: GameRoom = gameRooms[roomID];
         room.gameMode = gamemode;
         room.assignments = JSON.stringify(generateRolesX(room.numPlayers, gamemode));
-        room.status = 1;
+        room.status = RoomStatus.WAITING_ON_HOST;   // FIXME: no need to change it, maybe add another status code?
         await gameRoomsRef.child(roomID.toString()).set(room);
     } else {
         throw new Error("Game room does not exist");
@@ -85,7 +102,7 @@ async function resetStatus(roomID: number) {
 
     if (roomID in gameRooms) {
         const room: GameRoom = gameRooms[roomID];
-        room.status = 0;
+        room.status = RoomStatus.WAITING_ON_HOST;
         await gameRoomsRef.child(roomID.toString()).set(room);
     } else {
         throw new Error("Game room does not exist");
@@ -100,38 +117,29 @@ async function checkGameRoomReady(roomID: number): Promise<any> {
 
     if (roomID in gameRooms) {
         const room: GameRoom = gameRooms[roomID];
-        const isReady: boolean = (room.joinedPlayers === room.numPlayers && room.status === 1);
-        const retStatus = { status: isReady, joinedPlayers: room.joinedPlayers, numPlayers: room.numPlayers };
+        const retStatus = { status: room.status, joinedPlayers: room.joinedPlayers, numPlayers: room.numPlayers };
         return retStatus;
     } else {
         throw new Error("Game room does not exist");
     }
 }
 
-// currently unused, since it does not allow us to see totalPlayers and numPlayers
-function waitForGameroomReady(roomID: number) {
-    return new Promise(resolve => {
-        const statusRef = database.ref(`gameRooms/${roomID}`);
-        const listener = statusRef.on('value', snapshot => {
-            const room = snapshot.val();
-            if (room.joinedPlayers === room.numPlayers && room.status === 1) {
-                statusRef.off('value', listener); // Remove the listener
-                resolve(room);
-            }
-        });
-    });
-}
+
 
 function waitForStatusChange(roomID: number) {
     return new Promise(resolve => {
         const statusRef = database.ref(`gameRooms/${roomID}/status`);
         const listener = statusRef.on('value', snapshot => {
             const newStatus = snapshot.val();
-            if (newStatus === 0) {
+            if (newStatus === RoomStatus.WAITING_ON_HOST) {
                 statusRef.off('value', listener); // Remove the listener
                 resolve(newStatus);
             }
         });
     });
 }
-export { createNewGameRoom, joinGameRoom, checkGameRoomReady, getRole, generateRoles, getAllRoles, resetStatus, waitForGameroomReady, waitForStatusChange };
+export {
+    createNewGameRoom, joinGameRoom, checkGameRoomReady, getRole,
+    generateRoles, getAllRoles, resetStatus,
+    waitForStatusChange, overrideStartGameRoom
+};

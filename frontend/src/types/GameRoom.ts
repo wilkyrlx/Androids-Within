@@ -1,4 +1,4 @@
-import { Status } from "./status";
+import { RoomStatus } from "./status";
 
 
 /**
@@ -16,7 +16,7 @@ class GameRoom {
     gameMode: number;
     joinedPlayers: number;
     numPlayers: number;
-    status: Status;
+    status: RoomStatus;
     assignments: string;
 
     constructor(id: number, numPlayers: number) {
@@ -24,7 +24,7 @@ class GameRoom {
         this.gameMode = 0;
         this.joinedPlayers = 0;
         this.numPlayers = numPlayers;
-        this.status = Status.WAITING_ON_HOST;
+        this.status = RoomStatus.WAITING_ON_HOST;
         this.assignments = "";
     }
 }
