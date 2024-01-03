@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { pageView } from "../types/pageView";
-import databaseManager from "../utils/dbInteraction";
+import databaseManager from "../utils/databaseManager";
 
 
 

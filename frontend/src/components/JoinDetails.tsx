@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { pageView } from "../types/pageView";
-import { joinGameRoom } from "../utils/dbInteraction";
+import databaseManager from "../utils/databaseManager";
+import playerNameTranslator from "../utils/playerNameTranslator";
 
 function JoinDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom: any, setPlayerID: any }) {
 
@@ -8,33 +9,19 @@ function JoinDetails({ setView, setRoom, setPlayerID }: { setView: any, setRoom:
     const [playerIDText, setPlayerIDText] = useState<string>('');
 
     async function joinGame() {
-        const playerID: number = translatePlayerID(playerIDText);
+        const playerID: number = playerNameTranslator.nameToID(playerIDText);
 
         if (playerID === -1) {
             alert("Please enter a valid player ID");
         } else {
-            joinGameRoom(parseInt(roomCode));
+            databaseManager.joinGameRoom(parseInt(roomCode));
             setRoom(roomCode);
             setPlayerID(playerID);
             setView(pageView.WAITING);
         }
     }
 
-    // translates the letter to a number
-    // Returns -1 if the letter is not a valid player ID, if the string is not a letter, or if the string is empty
-    function translatePlayerID(letter: string): number {
-        if (letter === '' || letter.length > 1) {
-            return -1;
-        }
-
-        letter = letter.toUpperCase();
-        const playerIdNumber: number = letter.charCodeAt(0) - 'A'.charCodeAt(0);
-        
-        if (playerIdNumber < 0 || playerIdNumber > 11) {
-            return -1;
-        }
-        return playerIdNumber;
-    }
+    
 
     return (
         <div id="join-details" className="container">

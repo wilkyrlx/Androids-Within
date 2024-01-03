@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import IGamemode from "../types/IGamemode";
 import { getAllGamemodes, getAvailableGamemodes } from "../utils/gamemodesList";
 import { pageView } from "../types/pageView";
-import databaseManager from "../utils/dbInteraction";
+import databaseManager from "../utils/databaseManager";
 
 
 

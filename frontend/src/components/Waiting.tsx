@@ -1,10 +1,13 @@
 import { pageView } from "../types/pageView";
 import { useEffect, useState } from "react";
-import databaseManager from "../utils/dbInteraction";
+import databaseManager from "../utils/databaseManager";
 import { RoomStatus } from "../types/status";
+import playerNameTranslator from "../utils/playerNameTranslator";
+
+// TODO: add your player name to the waiting screen
 
 // Waits for all players to join the game before starting the game
-function Waiting({ setView, room, isHost }: { setView: any, room: number, isHost: boolean }) {
+function Waiting({ setView, room, isHost, playerID }: { setView: any, room: number, isHost: boolean, playerID: number }) {
 
     const [actualPlayers, setActualPlayers] = useState<string>('0');
     const [expectedPlayers, setExpectedPlayers] = useState<string>('0');
@@ -27,6 +30,7 @@ function Waiting({ setView, room, isHost }: { setView: any, room: number, isHost
     return (
         <div id="waiting" className="container">
             <p> Room {room}: waiting for the game to start... </p>
+            <p> You are player {playerNameTranslator.idToName(playerID)} </p>
             <p> {actualPlayers} / {expectedPlayers} players joined </p>
             { isHost && <button onClick={() => databaseManager.overrideStartGameRoom(room)}>(OVERRIDE) Start Game</button> }
         </div>

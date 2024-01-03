@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { pageView } from "../types/pageView";
-import { getAllRoles, resetStatus } from "../utils/dbInteraction";
+import databaseManager from "../utils/databaseManager";
 
 function AllRoles({ setView, room }: { setView: any, room: number }) {
 
@@ -8,7 +8,7 @@ function AllRoles({ setView, room }: { setView: any, room: number }) {
 
     useEffect(() => {
         async function fetchRoles() {
-            const assignments = await getAllRoles(room);
+            const assignments = await databaseManager.getAllRoles(room);
             const rolesSet = new Set<string>(); // set deduplicates
             Object.keys(assignments).forEach(key => {
                 console.log(key, assignments[key]);
@@ -22,7 +22,7 @@ function AllRoles({ setView, room }: { setView: any, room: number }) {
     }, []);
 
     function newGame() {
-        resetStatus(room);
+        databaseManager.resetStatus(room);
         setView(pageView.GAMEMODE_SELECT);
     }
 

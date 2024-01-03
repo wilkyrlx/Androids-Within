@@ -1,9 +1,8 @@
 import GameRoom from "../types/GameRoom";
 import { RoomStatus } from "../types/status";
-import database from "../utils/firebase";
+import database from "./firebase";
 import generateRolesX from "./gamemodeSelector";
 
-// TODO: add these to some class or const
 
 const databaseManager = {
 

@@ -66,7 +66,7 @@ function App() {
             {view === pageView.JOIN_DETAILS && <JoinDetails setView={setView} setRoom={setRoom} setPlayerID={setPlayerID} />}
             {view === pageView.ROOM_CODE && <RoomCode setView={setView} room={room} />}
             {view === pageView.GAMEMODE_SELECT && <GamemodeSelect setView={setView} room={room} playerCount={playerCount} setDuration={setDuration} />}
-            {view === pageView.WAITING && <Waiting setView={setView} room={room} isHost={isHost} />}
+            {view === pageView.WAITING && <Waiting setView={setView} room={room} isHost={isHost} playerID={playerID} />}
             {view === pageView.PLAYING && <Playing setView={setView} room={room} playerID={playerID} isHost={isHost} timerDuration={timerDuration} />}
             {view === pageView.TIMER && <Timer setView={setView} timerDuration={timerDuration} />}
             {view === pageView.ALL_ROLES && <AllRoles setView={setView} room={room} />}
