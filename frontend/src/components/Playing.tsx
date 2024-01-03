@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { pageView } from "../types/pageView";
-import { getRole, waitForStatusChange } from "../utils/dbInteraction";
+import databaseManager from "../utils/dbInteraction";
 import { set } from "@firebase/database";
 
 // TODO: add the gamemode
@@ -11,13 +11,13 @@ function Playing({ setView, room, playerID, isHost, timerDuration }: { setView: 
 
     useEffect(() => {
         async function fetchRole() {
-            const playerRaw = await getRole(room, playerID);
+            const playerRaw = await databaseManager.getRole(room, playerID);
             setName(playerRaw.name);
             setRole(playerRaw.role);
         }
 
         async function awaitRestart() {
-            const response = await waitForStatusChange(room);
+            const response = await databaseManager.waitForStatusChange(room);
             console.log('Status has changed:', response);
             setView(pageView.WAITING);
         }

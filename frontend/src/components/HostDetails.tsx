@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { pageView } from "../types/pageView";
-import { createNewGameRoom, joinGameRoom } from "../utils/dbInteraction";
+import databaseManager from "../utils/dbInteraction";
 
 
 
@@ -11,9 +11,9 @@ function HostDetails({ setView, setRoom, setPlayerID, setHost, setPlayerCount }:
 
     // Create the game, then join it
     async function startGame() {
-        const roomID: number = await createNewGameRoom(parseInt(playerCountText));
+        const roomID: number = await databaseManager.createNewGameRoom(parseInt(playerCountText));
         const playerID: number = 0; // always player A 
-        joinGameRoom(roomID);  
+        databaseManager.joinGameRoom(roomID);  
         setRoom(roomID);
         setPlayerID(playerID);
         setHost(true);

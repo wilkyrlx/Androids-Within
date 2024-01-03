@@ -1,6 +1,6 @@
 import { pageView } from "../types/pageView";
 import { useEffect, useState } from "react";
-import { checkGameRoomReady, overrideStartGameRoom } from "../utils/dbInteraction";
+import databaseManager from "../utils/dbInteraction";
 import { RoomStatus } from "../types/status";
 
 // Waits for all players to join the game before starting the game
@@ -10,7 +10,7 @@ function Waiting({ setView, room, isHost }: { setView: any, room: number, isHost
     const [expectedPlayers, setExpectedPlayers] = useState<string>('0');
 
     async function checkGameStatus() {
-        const gameStatus: any = await checkGameRoomReady(room);
+        const gameStatus: any = await databaseManager.checkGameRoomReady(room);
         if (gameStatus.status === RoomStatus.READY) {
             setView(pageView.PLAYING);
         } else {
@@ -28,7 +28,7 @@ function Waiting({ setView, room, isHost }: { setView: any, room: number, isHost
         <div id="waiting" className="container">
             <p> Room {room}: waiting for the game to start... </p>
             <p> {actualPlayers} / {expectedPlayers} players joined </p>
-            { isHost && <button onClick={() => overrideStartGameRoom(room)}>(OVERRIDE) Start Game</button> }
+            { isHost && <button onClick={() => databaseManager.overrideStartGameRoom(room)}>(OVERRIDE) Start Game</button> }
         </div>
     )
 }
