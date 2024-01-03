@@ -19,6 +19,16 @@ Please report any bugs to [John Wilkinson (developer)](mailto:john_wilkinson@bro
 3. Add that game mode to `src/games/gameExports.js`
 4. Add a switch case for that game mode to `src\utils\gamemodeSelector.ts`
 
+## Run Locally and Build for Deployment
+1. Install [Node.js](https://nodejs.org/en/)
+2. Clone this repository 
+3. Run `npm install` in the root directory
+4. Create `firebase.js` in `src/utils/` with your firebase config. Should look like `dummyFirebase.js`
+5. Run `npm start` to run locally
+6. Run `npm run build` to build for deployment
+7. Install [Firebase CLI](https://firebase.google.com/docs/cli)
+8. Deploy the contents of the `build` folder to firebase using `firebase deploy`
+
 ## Deploy Notes
-Last deployed: 2024-01-03 4:00 PM EST
+Last deployed: 2024-01-03 6:00 PM EST
 Last database cleanse: 2023-01-03
