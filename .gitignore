@@ -1,2 +1,13 @@
-node_modules
+# config
 firebase.js
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
