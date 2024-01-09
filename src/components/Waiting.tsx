@@ -4,7 +4,6 @@ import databaseManager from "../utils/databaseManager";
 import { RoomStatus } from "../types/status";
 import playerNameTranslator from "../utils/playerNameTranslator";
 
-// TODO: add your player name to the waiting screen
 
 // Waits for all players to join the game before starting the game
 function Waiting({ setView, room, isHost, playerID }: { setView: any, room: number, isHost: boolean, playerID: number }) {
@@ -31,8 +30,8 @@ function Waiting({ setView, room, isHost, playerID }: { setView: any, room: numb
         <div id="waiting" className="container">
             <p> Room {room}: waiting for the game to start... </p>
             <p> You are player {playerNameTranslator.idToName(playerID)} </p>
-            <p> {actualPlayers} / {expectedPlayers} players joined </p>
-            { isHost && <button onClick={() => databaseManager.overrideStartGameRoom(room)}>(OVERRIDE) Start Game</button> }
+            {/* TODO: add player list here */}
+            { isHost && <button onClick={() => databaseManager.overrideStartGameRoom(room)}>Start Game</button> }
         </div>
     )
 }

@@ -28,14 +28,21 @@ function Playing({ setView, room, playerID, isHost, timerDuration }: { setView: 
         }
     }, []);
 
+    function seeAllRoles() {
+        const r = window.confirm("Are you ready to see all roles?");
+        if (r) {
+            setView(pageView.ALL_ROLES);
+        }
+    }
+
     const useTimer: boolean = timerDuration > 0;
     return (
         <div id="playing" className="container containerII">
             <p> Game in progress... </p>
-            <p> Player {name} </p>
+            <p> Player {name}, room {room} </p>
             <p> {role} </p>
             {/* { useTimer && isHost && <button onClick={() => setView(pageView.TIMER)}>Start Timer</button> } */}
-            { isHost && <button onClick={() => setView(pageView.ALL_ROLES)}>See All Roles</button> }
+            { isHost && <button onClick={seeAllRoles}>See All Roles</button> }
         </div>
     )
 }

@@ -7,6 +7,7 @@ function RoomCode({ setView, room }: { setView: any, room: number}) {
     return (
         <div id="playing" className="container">
             <p> Roomcode: {room} </p>
+            <p> You are player A </p>   {/* Host is always player A */}
             <button onClick={() => setView(pageView.GAMEMODE_SELECT)}>Select Gamemode</button>
         </div>
     )

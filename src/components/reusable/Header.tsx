@@ -3,11 +3,18 @@ function clearData() {
     window.location.reload();
 }
 
+function quitClicked() {
+    const r = window.confirm("Are you sure you want to quit?");
+    if (r) {
+        clearData();
+    }
+}
+
 function Header() {
     return (
         <div id="header">
             <h1>Androids Within</h1>
-            <div onClick={() => clearData()}>Quit</div>
+            <div onClick={quitClicked}>Quit</div>
         </div>
     )
 }

@@ -83,13 +83,14 @@ function GamemodeSelect({ setView, room, playerCount, setDuration }: { setView: 
                         onClick={() => updateGamemode(gamemode)}>
                         <p>
                             <span>{gamemode.name}</span>
-                            <span className={`difficulty-${gamemode.difficulty}`}> &#8226;</span>
+                            {/* <span className={`difficulty-${gamemode.difficulty}`}> &#8226;</span> */}
+                            {/* TODO: add difficulty-coded dots back later */}
                         </p>
                     </li>
                 ))}
             </ul>
 
-            <button id="start-game-btn" className="btn-disabled" onClick={() => startGame()}>Start Game</button>
+            <button id="start-game-btn" className="btn-disabled" onClick={() => startGame()}>Enter Lobby</button>
         </div>
     )
 }
